@@ -6,5 +6,7 @@ lcdCom.cpp
 
 Proj2.cpp
 
+touch_screen.cpp
+
 uart.cpp
 

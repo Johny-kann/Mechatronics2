@@ -39,6 +39,7 @@ SUBDIRS :=
 C_SRCS +=  \
 ../lcdCom.cpp \
 ../Proj2.cpp \
+../touch_screen.cpp \
 ../uart.cpp
 
 
@@ -51,21 +52,25 @@ ASM_SRCS +=
 OBJS +=  \
 lcdCom.o \
 Proj2.o \
+touch_screen.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
 lcdCom.o \
 Proj2.o \
+touch_screen.o \
 uart.o
 
 C_DEPS +=  \
 lcdCom.d \
 Proj2.d \
+touch_screen.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
 lcdCom.d \
 Proj2.d \
+touch_screen.d \
 uart.d
 
 OUTPUT_FILE_PATH +=Proj2.elf
@@ -82,6 +87,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

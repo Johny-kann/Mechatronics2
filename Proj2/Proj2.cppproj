@@ -116,6 +116,12 @@
     <Compile Include="Proj2.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="touch_screen.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="touch_screen.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="uart.cpp">
       <SubType>compile</SubType>
     </Compile>
