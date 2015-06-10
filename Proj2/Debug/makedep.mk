@@ -4,6 +4,8 @@
 
 lcdCom.cpp
 
+operations.cpp
+
 Proj2.cpp
 
 touch_screen.cpp

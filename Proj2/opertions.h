@@ -8,6 +8,8 @@
 
 #ifndef OPERTIONS_H_
 #define OPERTIONS_H_
+#include <avr/io.h>
+//#include "items.h"
 
 void timer1_interrupt_init(unsigned int number);
 

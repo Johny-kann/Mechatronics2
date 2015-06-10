@@ -113,6 +113,12 @@
     <Compile Include="LcdCom.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="operations.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="opertions.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Proj2.cpp">
       <SubType>compile</SubType>
     </Compile>

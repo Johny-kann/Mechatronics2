@@ -38,6 +38,7 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../lcdCom.cpp \
+../operations.cpp \
 ../Proj2.cpp \
 ../touch_screen.cpp \
 ../uart.cpp
@@ -51,24 +52,28 @@ ASM_SRCS +=
 
 OBJS +=  \
 lcdCom.o \
+operations.o \
 Proj2.o \
 touch_screen.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
 lcdCom.o \
+operations.o \
 Proj2.o \
 touch_screen.o \
 uart.o
 
 C_DEPS +=  \
 lcdCom.d \
+operations.d \
 Proj2.d \
 touch_screen.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
 lcdCom.d \
+operations.d \
 Proj2.d \
 touch_screen.d \
 uart.d
@@ -87,6 +92,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

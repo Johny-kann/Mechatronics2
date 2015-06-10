@@ -60,11 +60,14 @@ Discarded input sections
  .debug_str     0x00000000      0x382 lcdCom.o
  .comment       0x00000000       0x31 lcdCom.o
  .debug_frame   0x00000000       0xf0 lcdCom.o
+ .text          0x00000000        0x0 operations.o
+ .data          0x00000000        0x0 operations.o
+ .bss           0x00000000        0x0 operations.o
+ .text._Z8adc_initv
+                0x00000000       0x16 operations.o
  .text          0x00000000        0x0 Proj2.o
  .data          0x00000000        0x0 Proj2.o
  .bss           0x00000000        0x0 Proj2.o
- .text._Z8adc_initv
-                0x00000000       0x16 Proj2.o
  .text          0x00000000        0x0 touch_screen.o
  .data          0x00000000        0x0 touch_screen.o
  .bss           0x00000000        0x0 touch_screen.o
@@ -185,6 +188,7 @@ Linker script and memory map
 Address of section .data set to 0x800100
 LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm328p.o
 LOAD lcdCom.o
+LOAD operations.o
 LOAD Proj2.o
 LOAD touch_screen.o
 LOAD uart.o
@@ -374,16 +378,16 @@ END GROUP
                 0x000000a6                . = ALIGN (0x2)
  *(.text.*)
  .text._Z21timer1_interrupt_initj
-                0x000000a6       0x1a Proj2.o
+                0x000000a6       0x1a operations.o
                 0x000000a6                _Z21timer1_interrupt_initj
  .text._Z8adc_readh
-                0x000000c0       0x28 Proj2.o
+                0x000000c0       0x28 operations.o
                 0x000000c0                _Z8adc_readh
  .text._Z5readXv
-                0x000000e8       0x24 Proj2.o
+                0x000000e8       0x24 operations.o
                 0x000000e8                _Z5readXv
  .text._Z5readYv
-                0x0000010c       0x24 Proj2.o
+                0x0000010c       0x24 operations.o
                 0x0000010c                _Z5readYv
  .text.main     0x00000130       0x56 Proj2.o
                 0x00000130                main
@@ -491,9 +495,9 @@ END GROUP
                 0x0080010e                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.touchScreen
+ .bss.touchscreen
                 0x0080010e        0x4 Proj2.o
-                0x0080010e                touchScreen
+                0x0080010e                touchscreen
  *(COMMON)
                 0x00800112                PROVIDE (__bss_end, .)
                 0x00000866                __data_load_start = LOADADDR (.data)
@@ -545,8 +549,9 @@ END GROUP
 
 .comment        0x00000000       0x5c
  *(.comment)
- .comment       0x00000000       0x30 Proj2.o
+ .comment       0x00000000       0x30 operations.o
                                  0x31 (size before relaxing)
+ .comment       0x00000000       0x31 Proj2.o
  .comment       0x00000000       0x31 touch_screen.o
  .comment       0x00000000       0x31 uart.o
  .comment       0x00000000       0x31 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
@@ -569,54 +574,63 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xd8
+.debug_aranges  0x00000000       0xf0
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x50 Proj2.o
+                0x00000000       0x40 operations.o
  .debug_aranges
-                0x00000050       0x48 touch_screen.o
+                0x00000040       0x28 Proj2.o
  .debug_aranges
-                0x00000098       0x40 uart.o
+                0x00000068       0x48 touch_screen.o
+ .debug_aranges
+                0x000000b0       0x40 uart.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x94c
+.debug_info     0x00000000      0xa53
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x501 Proj2.o
- .debug_info    0x00000501      0x294 touch_screen.o
- .debug_info    0x00000795      0x1b7 uart.o
+ .debug_info    0x00000000      0x226 operations.o
+ .debug_info    0x00000226      0x3e2 Proj2.o
+ .debug_info    0x00000608      0x294 touch_screen.o
+ .debug_info    0x0000089c      0x1b7 uart.o
 
-.debug_abbrev   0x00000000      0x48f
+.debug_abbrev   0x00000000      0x580
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x241 Proj2.o
- .debug_abbrev  0x00000241      0x12b touch_screen.o
- .debug_abbrev  0x0000036c      0x123 uart.o
+ .debug_abbrev  0x00000000      0x15e operations.o
+ .debug_abbrev  0x0000015e      0x1d4 Proj2.o
+ .debug_abbrev  0x00000332      0x12b touch_screen.o
+ .debug_abbrev  0x0000045d      0x123 uart.o
 
-.debug_line     0x00000000      0x40e
+.debug_line     0x00000000      0x533
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x1f3 Proj2.o
- .debug_line    0x000001f3      0x117 touch_screen.o
- .debug_line    0x0000030a      0x104 uart.o
+ .debug_line    0x00000000      0x195 operations.o
+ .debug_line    0x00000195      0x183 Proj2.o
+ .debug_line    0x00000318      0x117 touch_screen.o
+ .debug_line    0x0000042f      0x104 uart.o
 
-.debug_frame    0x00000000      0x1cc
+.debug_frame    0x00000000      0x1e0
  *(.debug_frame)
- .debug_frame   0x00000000       0xcc Proj2.o
- .debug_frame   0x000000cc       0x74 touch_screen.o
- .debug_frame   0x00000140       0x8c uart.o
+ .debug_frame   0x00000000       0x64 operations.o
+ .debug_frame   0x00000064       0x7c Proj2.o
+ .debug_frame   0x000000e0       0x74 touch_screen.o
+ .debug_frame   0x00000154       0x8c uart.o
 
-.debug_str      0x00000000      0x3fd
+.debug_str      0x00000000      0x411
  *(.debug_str)
- .debug_str     0x00000000      0x375 Proj2.o
-                                0x3b3 (size before relaxing)
- .debug_str     0x00000375       0x1b touch_screen.o
+ .debug_str     0x00000000      0x21e operations.o
+                                0x252 (size before relaxing)
+ .debug_str     0x0000021e      0x16b Proj2.o
+                                0x381 (size before relaxing)
+ .debug_str     0x00000389       0x1b touch_screen.o
                                 0x266 (size before relaxing)
- .debug_str     0x00000390       0x6d uart.o
+ .debug_str     0x000003a4       0x6d uart.o
                                 0x239 (size before relaxing)
 
 .debug_loc      0x00000000      0x2b5
  *(.debug_loc)
- .debug_loc     0x00000000      0x108 Proj2.o
+ .debug_loc     0x00000000       0x3d operations.o
+ .debug_loc     0x0000003d       0xcb Proj2.o
  .debug_loc     0x00000108       0x9c touch_screen.o
  .debug_loc     0x000001a4      0x111 uart.o
 
@@ -638,11 +652,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xa8
+.debug_ranges   0x00000000       0xb0
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x40 Proj2.o
- .debug_ranges  0x00000040       0x38 touch_screen.o
- .debug_ranges  0x00000078       0x30 uart.o
+ .debug_ranges  0x00000000       0x30 operations.o
+ .debug_ranges  0x00000030       0x18 Proj2.o
+ .debug_ranges  0x00000048       0x38 touch_screen.o
+ .debug_ranges  0x00000080       0x30 uart.o
 
 .debug_macro
  *(.debug_macro)
