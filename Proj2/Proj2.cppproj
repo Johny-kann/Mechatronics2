@@ -122,6 +122,12 @@
     <Compile Include="Proj2.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="stepper_motor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="stepper_motor.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="touch_screen.cpp">
       <SubType>compile</SubType>
     </Compile>

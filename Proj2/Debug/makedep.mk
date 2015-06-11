@@ -8,6 +8,8 @@ operations.cpp
 
 Proj2.cpp
 
+stepper_motor.cpp
+
 touch_screen.cpp
 
 uart.cpp

@@ -14,6 +14,7 @@
 #include "touch_screen.h"
 //#include "items.h"
 #include "opertions.h"
+#include "stepper_motor.h"
 
 TouchScreen touchscreen;
 
@@ -21,7 +22,7 @@ TouchScreen touchscreen;
 int main(void)
 {
 	
-	USART_Init(MYUBRR);
+//	USART_Init(MYUBRR);
 //	USART_Sendbyte(0xFE);
 //	USART_Sendbyte(0x01);
 //	LcdDisplay lcd;
@@ -34,10 +35,12 @@ int main(void)
 //	uint16_t adc_result ;
 	sei();
 	
-	touchscreen.init();
+	StepperMotor stepMotor;
+	
+//	touchscreen.init();
 	
 //	touchScreen.init();
-	timer1_interrupt_init(50000);
+//	timer1_interrupt_init(50000);
 	
 	
 //	adc_init();
@@ -47,11 +50,14 @@ int main(void)
     while(1)
     {
 	//	adc_result = adc_read(1);
-	USART_Send_string(" X: ");
-	USART_Send_int(touchscreen.getPosX());
-	USART_Send_string(" Y: ");
-	USART_Send_int(touchscreen.getPosY());
-	_delay_ms(1000);
+//	USART_Send_string(" X: ");
+//	USART_Send_int(touchscreen.getPosX());
+//	USART_Send_string(" Y: ");
+//	USART_Send_int(touchscreen.getPosY());
+//	_delay_ms(1000);
+	stepMotor.moveForward(360,2);
+	_delay_ms(500);
+	stepMotor.moveBackward(150,3);
 		
     }
 }

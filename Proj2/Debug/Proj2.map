@@ -3,7 +3,7 @@ Archive member included because of file (symbol)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
                               c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm328p.o (exit)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_copy_data.o)
-                              Proj2.o (__do_copy_data)
+                              uart.o (__do_copy_data)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_clear_bss.o)
                               Proj2.o (__do_clear_bss)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
@@ -65,17 +65,50 @@ Discarded input sections
  .bss           0x00000000        0x0 operations.o
  .text._Z8adc_initv
                 0x00000000       0x16 operations.o
+ .text._Z21timer1_interrupt_initj
+                0x00000000       0x1a operations.o
  .text          0x00000000        0x0 Proj2.o
  .data          0x00000000        0x0 Proj2.o
  .bss           0x00000000        0x0 Proj2.o
+ .text          0x00000000        0x0 stepper_motor.o
+ .data          0x00000000        0x0 stepper_motor.o
+ .bss           0x00000000        0x0 stepper_motor.o
  .text          0x00000000        0x0 touch_screen.o
  .data          0x00000000        0x0 touch_screen.o
  .bss           0x00000000        0x0 touch_screen.o
+ .text._ZN11TouchScreen8adc_initEv
+                0x00000000       0x16 touch_screen.o
+ .text._ZN11TouchScreen4initEv
+                0x00000000        0x6 touch_screen.o
+ .text._ZN11TouchScreen7getPosXEv
+                0x00000000        0x8 touch_screen.o
+ .text._ZN11TouchScreen7getPosYEv
+                0x00000000        0x8 touch_screen.o
  .text          0x00000000        0x0 uart.o
  .data          0x00000000        0x0 uart.o
  .bss           0x00000000        0x0 uart.o
+ .text._Z10USART_Initj
+                0x00000000       0x16 uart.o
+ .text._Z14USART_Sendbyteh
+                0x00000000       0x10 uart.o
+ .text._Z17USART_Send_stringPKc
+                0x00000000       0x1e uart.o
+ .rodata.str1.1
+                0x00000000        0x3 uart.o
+ .text._Z14USART_Send_intj
+                0x00000000       0x5a uart.o
  .text._Z13USART_Receivev
                 0x00000000       0x10 uart.o
+ .debug_info    0x00000000      0x1b7 uart.o
+ .debug_abbrev  0x00000000      0x123 uart.o
+ .debug_loc     0x00000000      0x111 uart.o
+ .debug_aranges
+                0x00000000       0x40 uart.o
+ .debug_ranges  0x00000000       0x30 uart.o
+ .debug_line    0x00000000      0x104 uart.o
+ .debug_str     0x00000000      0x239 uart.o
+ .comment       0x00000000       0x31 uart.o
+ .debug_frame   0x00000000       0x8c uart.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
@@ -127,21 +160,36 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
+ .text.avr-libc
+                0x00000000       0x44 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
+ .comment       0x00000000       0x31 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
+ .text.avr-libc
+                0x00000000      0x3a4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
+ .comment       0x00000000       0x2d c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
+ .text.avr-libc
+                0x00000000       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
+ .text.avr-libc
+                0x00000000       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
+ .text.avr-libc
+                0x00000000       0x64 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
+ .comment       0x00000000       0x31 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
+ .text.avr-libc
+                0x00000000       0xbc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
@@ -150,6 +198,8 @@ Discarded input sections
  .text.libgcc.div
                 0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
  .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
+ .text.libgcc.prologue
+                0x00000000       0x38 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
  .text.libgcc.builtins
                 0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
  .text.libgcc.fmul
@@ -164,6 +214,8 @@ Discarded input sections
  .text.libgcc.div
                 0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
  .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
+ .text.libgcc.prologue
+                0x00000000       0x36 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
  .text.libgcc.builtins
                 0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
  .text.libgcc.fmul
@@ -190,6 +242,7 @@ LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-
 LOAD lcdCom.o
 LOAD operations.o
 LOAD Proj2.o
+LOAD stepper_motor.o
 LOAD touch_screen.o
 LOAD uart.o
 START GROUP
@@ -293,7 +346,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x866
+.text           0x00000000      0x276
  *(.vectors)
  .vectors       0x00000000       0x68 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm328p.o
                 0x00000000                __vector_default
@@ -377,82 +430,41 @@ END GROUP
                 0x000000a2                __vector_20
                 0x000000a6                . = ALIGN (0x2)
  *(.text.*)
- .text._Z21timer1_interrupt_initj
-                0x000000a6       0x1a operations.o
-                0x000000a6                _Z21timer1_interrupt_initj
  .text._Z8adc_readh
-                0x000000c0       0x28 operations.o
-                0x000000c0                _Z8adc_readh
+                0x000000a6       0x28 operations.o
+                0x000000a6                _Z8adc_readh
  .text._Z5readXv
-                0x000000e8       0x24 operations.o
-                0x000000e8                _Z5readXv
+                0x000000ce       0x24 operations.o
+                0x000000ce                _Z5readXv
  .text._Z5readYv
-                0x0000010c       0x24 operations.o
-                0x0000010c                _Z5readYv
- .text.main     0x00000130       0x56 Proj2.o
-                0x00000130                main
+                0x000000f2       0x24 operations.o
+                0x000000f2                _Z5readYv
+ .text.main     0x00000116       0x4a Proj2.o
+                0x00000116                main
  .text.__vector_11
-                0x00000186       0x60 Proj2.o
-                0x00000186                __vector_11
- .text._ZN11TouchScreen8adc_initEv
-                0x000001e6       0x16 touch_screen.o
-                0x000001e6                _ZN11TouchScreen8adc_initEv
- .text._ZN11TouchScreen4initEv
-                0x000001fc        0x6 touch_screen.o
-                0x000001fc                _ZN11TouchScreen4initEv
- .text._ZN11TouchScreen7getPosXEv
-                0x00000202        0x8 touch_screen.o
-                0x00000202                _ZN11TouchScreen7getPosXEv
- .text._ZN11TouchScreen7getPosYEv
-                0x0000020a        0x8 touch_screen.o
-                0x0000020a                _ZN11TouchScreen7getPosYEv
+                0x00000160       0x60 Proj2.o
+                0x00000160                __vector_11
+ .text._ZN12StepperMotor11moveForwardEii
+                0x000001c0       0x46 stepper_motor.o
+                0x000001c0                _ZN12StepperMotor11moveForwardEii
+ .text._ZN12StepperMotor12moveBackwardEii
+                0x00000206       0x44 stepper_motor.o
+                0x00000206                _ZN12StepperMotor12moveBackwardEii
+ .text._ZN12StepperMotorC2Ev
+                0x0000024a       0x18 stepper_motor.o
+                0x0000024a                _ZN12StepperMotorC2Ev
+                0x0000024a                _ZN12StepperMotorC1Ev
  .text._ZN11TouchScreen7setPosXEj
-                0x00000212        0x8 touch_screen.o
-                0x00000212                _ZN11TouchScreen7setPosXEj
+                0x00000262        0x8 touch_screen.o
+                0x00000262                _ZN11TouchScreen7setPosXEj
  .text._ZN11TouchScreen7setPosYEj
-                0x0000021a        0x8 touch_screen.o
-                0x0000021a                _ZN11TouchScreen7setPosYEj
- .text._Z10USART_Initj
-                0x00000222       0x16 uart.o
-                0x00000222                _Z10USART_Initj
- .text._Z14USART_Sendbyteh
-                0x00000238       0x10 uart.o
-                0x00000238                _Z14USART_Sendbyteh
- .text._Z17USART_Send_stringPKc
-                0x00000248       0x1e uart.o
-                0x00000248                _Z17USART_Send_stringPKc
- .text._Z14USART_Send_intj
-                0x00000266       0x5a uart.o
-                0x00000266                _Z14USART_Send_intj
- .text.avr-libc
-                0x000002c0       0x44 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
-                0x000002c0                sprintf
- .text.avr-libc
-                0x00000304      0x3a4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
-                0x00000304                vfprintf
- .text.avr-libc
-                0x000006a8       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
-                0x000006a8                strnlen_P
- .text.avr-libc
-                0x000006be       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
-                0x000006be                strnlen
- .text.avr-libc
-                0x000006d4       0x64 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
-                0x000006d4                fputc
- .text.avr-libc
-                0x00000738       0xbc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
-                0x00000738                __ultoa_invert
- .text.libgcc.prologue
-                0x000007f4       0x38 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
-                0x000007f4                __prologue_saves__
- .text.libgcc.prologue
-                0x0000082c       0x36 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
-                0x0000082c                __epilogue_restores__
-                0x00000862                . = ALIGN (0x2)
+                0x0000026a        0x8 touch_screen.o
+                0x0000026a                _ZN11TouchScreen7setPosYEj
+                0x00000272                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000862        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
-                0x00000862                _exit
-                0x00000862                exit
+ .fini9         0x00000272        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+                0x00000272                _exit
+                0x00000272                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -471,44 +483,39 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000862        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000272        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000866                _etext = .
+                0x00000276                _etext = .
 
-.data           0x00800100        0xe load address 0x00000866
+.data           0x00800100        0x0 load address 0x00000276
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  *(.rodata)
  *(.rodata*)
- .rodata.str1.1
-                0x00800100        0xa Proj2.o
- .rodata.str1.1
-                0x0080010a        0x3 uart.o
  *(.gnu.linkonce.d*)
-                0x0080010e                . = ALIGN (0x2)
- *fill*         0x0080010d        0x1 
-                0x0080010e                _edata = .
-                0x0080010e                PROVIDE (__data_end, .)
+                0x00800100                . = ALIGN (0x2)
+                0x00800100                _edata = .
+                0x00800100                PROVIDE (__data_end, .)
 
-.bss            0x0080010e        0x4
-                0x0080010e                PROVIDE (__bss_start, .)
+.bss            0x00800100        0x4
+                0x00800100                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.touchscreen
-                0x0080010e        0x4 Proj2.o
-                0x0080010e                touchscreen
+                0x00800100        0x4 Proj2.o
+                0x00800100                touchscreen
  *(COMMON)
-                0x00800112                PROVIDE (__bss_end, .)
-                0x00000866                __data_load_start = LOADADDR (.data)
-                0x00000874                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800104                PROVIDE (__bss_end, .)
+                0x00000276                __data_load_start = LOADADDR (.data)
+                0x00000276                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800112        0x0
-                0x00800112                PROVIDE (__noinit_start, .)
+.noinit         0x00800104        0x0
+                0x00800104                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800112                PROVIDE (__noinit_end, .)
-                0x00800112                _end = .
-                0x00800112                PROVIDE (__heap_start, .)
+                0x00800104                PROVIDE (__noinit_end, .)
+                0x00800104                _end = .
+                0x00800104                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -547,17 +554,13 @@ END GROUP
 .stab.indexstr
  *(.stab.indexstr)
 
-.comment        0x00000000       0x5c
+.comment        0x00000000       0x30
  *(.comment)
  .comment       0x00000000       0x30 operations.o
                                  0x31 (size before relaxing)
  .comment       0x00000000       0x31 Proj2.o
+ .comment       0x00000000       0x31 stepper_motor.o
  .comment       0x00000000       0x31 touch_screen.o
- .comment       0x00000000       0x31 uart.o
- .comment       0x00000000       0x31 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
- .comment       0x00000030       0x2c c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
-                                 0x2d (size before relaxing)
- .comment       0x00000000       0x31 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -574,65 +577,65 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xf0
+.debug_aranges  0x00000000       0xe0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x40 operations.o
  .debug_aranges
                 0x00000040       0x28 Proj2.o
  .debug_aranges
-                0x00000068       0x48 touch_screen.o
+                0x00000068       0x30 stepper_motor.o
  .debug_aranges
-                0x000000b0       0x40 uart.o
+                0x00000098       0x48 touch_screen.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xa53
+.debug_info     0x00000000      0xbd1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x226 operations.o
- .debug_info    0x00000226      0x3e2 Proj2.o
- .debug_info    0x00000608      0x294 touch_screen.o
- .debug_info    0x0000089c      0x1b7 uart.o
+ .debug_info    0x00000226      0x3c8 Proj2.o
+ .debug_info    0x000005ee      0x34f stepper_motor.o
+ .debug_info    0x0000093d      0x294 touch_screen.o
 
-.debug_abbrev   0x00000000      0x580
+.debug_abbrev   0x00000000      0x63f
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x15e operations.o
- .debug_abbrev  0x0000015e      0x1d4 Proj2.o
- .debug_abbrev  0x00000332      0x12b touch_screen.o
- .debug_abbrev  0x0000045d      0x123 uart.o
+ .debug_abbrev  0x0000015e      0x1fa Proj2.o
+ .debug_abbrev  0x00000358      0x1bc stepper_motor.o
+ .debug_abbrev  0x00000514      0x12b touch_screen.o
 
-.debug_line     0x00000000      0x533
+.debug_line     0x00000000      0x5ca
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x195 operations.o
- .debug_line    0x00000195      0x183 Proj2.o
- .debug_line    0x00000318      0x117 touch_screen.o
- .debug_line    0x0000042f      0x104 uart.o
+ .debug_line    0x00000195      0x186 Proj2.o
+ .debug_line    0x0000031b      0x198 stepper_motor.o
+ .debug_line    0x000004b3      0x117 touch_screen.o
 
-.debug_frame    0x00000000      0x1e0
+.debug_frame    0x00000000      0x1a8
  *(.debug_frame)
  .debug_frame   0x00000000       0x64 operations.o
- .debug_frame   0x00000064       0x7c Proj2.o
- .debug_frame   0x000000e0       0x74 touch_screen.o
- .debug_frame   0x00000154       0x8c uart.o
+ .debug_frame   0x00000064       0x8c Proj2.o
+ .debug_frame   0x000000f0       0x44 stepper_motor.o
+ .debug_frame   0x00000134       0x74 touch_screen.o
 
-.debug_str      0x00000000      0x411
+.debug_str      0x00000000      0x40c
  *(.debug_str)
  .debug_str     0x00000000      0x21e operations.o
                                 0x252 (size before relaxing)
- .debug_str     0x0000021e      0x16b Proj2.o
-                                0x381 (size before relaxing)
- .debug_str     0x00000389       0x1b touch_screen.o
+ .debug_str     0x0000021e      0x18b Proj2.o
+                                0x370 (size before relaxing)
+ .debug_str     0x000003a9       0x4d stepper_motor.o
+                                0x26f (size before relaxing)
+ .debug_str     0x000003f6       0x16 touch_screen.o
                                 0x266 (size before relaxing)
- .debug_str     0x000003a4       0x6d uart.o
-                                0x239 (size before relaxing)
 
-.debug_loc      0x00000000      0x2b5
+.debug_loc      0x00000000      0x3f2
  *(.debug_loc)
  .debug_loc     0x00000000       0x3d operations.o
- .debug_loc     0x0000003d       0xcb Proj2.o
- .debug_loc     0x00000108       0x9c touch_screen.o
- .debug_loc     0x000001a4      0x111 uart.o
+ .debug_loc     0x0000003d      0x113 Proj2.o
+ .debug_loc     0x00000150      0x206 stepper_motor.o
+ .debug_loc     0x00000356       0x9c touch_screen.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -652,12 +655,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xb0
+.debug_ranges   0x00000000       0xa0
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x30 operations.o
  .debug_ranges  0x00000030       0x18 Proj2.o
- .debug_ranges  0x00000048       0x38 touch_screen.o
- .debug_ranges  0x00000080       0x30 uart.o
+ .debug_ranges  0x00000048       0x20 stepper_motor.o
+ .debug_ranges  0x00000068       0x38 touch_screen.o
 
 .debug_macro
  *(.debug_macro)
