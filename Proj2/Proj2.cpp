@@ -11,8 +11,7 @@
 #include <avr/interrupt.h>
 #include "uart.h"
 //#include "servo.h"
-#include "LcdCom.h"
-#include "touch_screen.h"
+#include "models.h"
 //#include "items.h"
 #include "opertions.h"
 //#include "stepper_motor.h"

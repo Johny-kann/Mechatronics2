@@ -28,15 +28,15 @@
     <eraseonlaunchrule>1</eraseonlaunchrule>
     <AsfFrameworkConfig>
       <framework-data xmlns="">
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.23.1" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.23.1" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -119,12 +119,6 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="lcdCom.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="LcdCom.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="operations.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -140,22 +134,10 @@
     <Compile Include="Proj2.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="servo.cpp">
+    <Compile Include="models.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="servo.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="stepper_motor.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="stepper_motor.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="touch_screen.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="touch_screen.h">
+    <Compile Include="models.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="uart.cpp">

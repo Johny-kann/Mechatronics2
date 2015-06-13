@@ -8,7 +8,7 @@
 #include <avr/io.h>
 #ifndef PAGES_H_
 #define PAGES_H_
-#include "LcdCom.h"
+#include "models.h"
 
 class Pages
 {

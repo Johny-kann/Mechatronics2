@@ -11,21 +11,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   3 .comment      00000030  00000000  00000000  00000666  2**0
                   CONTENTS, READONLY
-  4 .debug_aranges 000001b8  00000000  00000000  00000696  2**0
+  4 .debug_aranges 000001d8  00000000  00000000  00000696  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000020cf  00000000  00000000  0000084e  2**0
+  5 .debug_info   00002509  00000000  00000000  0000086e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000937  00000000  00000000  0000291d  2**0
+  6 .debug_abbrev 0000098c  00000000  00000000  00002d77  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000862  00000000  00000000  00003254  2**0
+  7 .debug_line   00000940  00000000  00000000  00003703  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000003c8  00000000  00000000  00003ab8  2**2
+  8 .debug_frame  00000424  00000000  00000000  00004044  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000757  00000000  00000000  00003e80  2**0
+  9 .debug_str    0000087f  00000000  00000000  00004468  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000013de  00000000  00000000  000045d7  2**0
+ 10 .debug_loc    000016dc  00000000  00000000  00004ce7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000158  00000000  00000000  000059b5  2**0
+ 11 .debug_ranges 00000188  00000000  00000000  000063c3  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -45,7 +45,7 @@ Disassembly of section .text:
   2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  38:	0c 94 49 02 	jmp	0x492	; 0x492 <__vector_14>
+  38:	0c 94 22 02 	jmp	0x444	; 0x444 <__vector_14>
   3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
@@ -92,868 +92,868 @@ Disassembly of section .text:
   94:	a0 35       	cpi	r26, 0x50	; 80
   96:	b2 07       	cpc	r27, r18
   98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
-  9a:	0e 94 0f 02 	call	0x41e	; 0x41e <main>
+  9a:	0e 94 e8 01 	call	0x3d0	; 0x3d0 <main>
   9e:	0c 94 c2 02 	jmp	0x584	; 0x584 <_exit>
 
 000000a2 <__bad_interrupt>:
   a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-000000a6 <_ZN10LcdDisplay8init_lcdEv>:
- *  Author: Janakiraman
- */ 
-
-void LcdDisplay::init_lcd()
-{
-	USART_Init(MYUBRR);
-  a6:	87 e6       	ldi	r24, 0x67	; 103
-  a8:	90 e0       	ldi	r25, 0x00	; 0
-  aa:	0e 94 a0 02 	call	0x540	; 0x540 <_Z10USART_Initj>
-  ae:	08 95       	ret
-
-000000b0 <_ZN10LcdDisplay12clearDisplayEv>:
-}
-
-void LcdDisplay::clearDisplay()
-{
-	USART_Sendbyte(0xFE);
-  b0:	8e ef       	ldi	r24, 0xFE	; 254
-  b2:	0e 94 ab 02 	call	0x556	; 0x556 <_Z14USART_Sendbyteh>
-	USART_Sendbyte(0x01);
-  b6:	81 e0       	ldi	r24, 0x01	; 1
-  b8:	0e 94 ab 02 	call	0x556	; 0x556 <_Z14USART_Sendbyteh>
-  bc:	08 95       	ret
-
-000000be <_ZN10LcdDisplay13displayStringEPKc>:
-}
-
-void LcdDisplay::displayString(const char *str)
-{
-  be:	cb 01       	movw	r24, r22
-	USART_Send_string(str);
-  c0:	0e 94 b3 02 	call	0x566	; 0x566 <_Z17USART_Send_stringPKc>
-  c4:	08 95       	ret
-
-000000c6 <_ZN10LcdDisplay6gotoXYEhj>:
-		USART_Sendbyte(0x1C);
-	}
-}
-
-void LcdDisplay::gotoXY(unsigned char row, unsigned int col)
-{
-  c6:	cf 93       	push	r28
-  c8:	df 93       	push	r29
-  ca:	c6 2f       	mov	r28, r22
-  cc:	d4 2f       	mov	r29, r20
-	USART_Sendbyte(0xFE);
-  ce:	8e ef       	ldi	r24, 0xFE	; 254
-  d0:	0e 94 ab 02 	call	0x556	; 0x556 <_Z14USART_Sendbyteh>
-	if(row==1)
-  d4:	c1 30       	cpi	r28, 0x01	; 1
-  d6:	29 f4       	brne	.+10     	; 0xe2 <_ZN10LcdDisplay6gotoXYEhj+0x1c>
-	{
-		USART_Sendbyte(0+(col-1)+128);
-  d8:	8f e7       	ldi	r24, 0x7F	; 127
-  da:	8d 0f       	add	r24, r29
-  dc:	0e 94 ab 02 	call	0x556	; 0x556 <_Z14USART_Sendbyteh>
-  e0:	06 c0       	rjmp	.+12     	; 0xee <_ZN10LcdDisplay6gotoXYEhj+0x28>
-	}else if(row==2)
-  e2:	c2 30       	cpi	r28, 0x02	; 2
-  e4:	21 f4       	brne	.+8      	; 0xee <_ZN10LcdDisplay6gotoXYEhj+0x28>
-	{
-		USART_Sendbyte(64+(col-1)+128);
-  e6:	8f eb       	ldi	r24, 0xBF	; 191
-  e8:	8d 0f       	add	r24, r29
-  ea:	0e 94 ab 02 	call	0x556	; 0x556 <_Z14USART_Sendbyteh>
-	}
-}
-  ee:	df 91       	pop	r29
-  f0:	cf 91       	pop	r28
-  f2:	08 95       	ret
-
-000000f4 <_Z8adc_initv>:
+000000a6 <_Z8adc_initv>:
 
 
 
 void adc_init()
 {
 	ADMUX |= (1<<REFS0);
-  f4:	ec e7       	ldi	r30, 0x7C	; 124
-  f6:	f0 e0       	ldi	r31, 0x00	; 0
-  f8:	80 81       	ld	r24, Z
-  fa:	80 64       	ori	r24, 0x40	; 64
-  fc:	80 83       	st	Z, r24
+  a6:	ec e7       	ldi	r30, 0x7C	; 124
+  a8:	f0 e0       	ldi	r31, 0x00	; 0
+  aa:	80 81       	ld	r24, Z
+  ac:	80 64       	ori	r24, 0x40	; 64
+  ae:	80 83       	st	Z, r24
 	ADCSRA |= (1<<ADPS0) | (1<<ADPS1) | (1<<ADPS2) | (1<<ADEN);
-  fe:	ea e7       	ldi	r30, 0x7A	; 122
- 100:	f0 e0       	ldi	r31, 0x00	; 0
- 102:	80 81       	ld	r24, Z
- 104:	87 68       	ori	r24, 0x87	; 135
- 106:	80 83       	st	Z, r24
- 108:	08 95       	ret
+  b0:	ea e7       	ldi	r30, 0x7A	; 122
+  b2:	f0 e0       	ldi	r31, 0x00	; 0
+  b4:	80 81       	ld	r24, Z
+  b6:	87 68       	ori	r24, 0x87	; 135
+  b8:	80 83       	st	Z, r24
+  ba:	08 95       	ret
 
-0000010a <_Z21timer0_interrupt_initv>:
+000000bc <_Z21timer0_interrupt_initv>:
 }
 
 void timer0_interrupt_init()
 {
 	
 	TCCR0B |= 1<< CS01 | 1<<CS00;
- 10a:	85 b5       	in	r24, 0x25	; 37
- 10c:	83 60       	ori	r24, 0x03	; 3
- 10e:	85 bd       	out	0x25, r24	; 37
+  bc:	85 b5       	in	r24, 0x25	; 37
+  be:	83 60       	ori	r24, 0x03	; 3
+  c0:	85 bd       	out	0x25, r24	; 37
 	//| 1<<WGM02;
 	TIMSK0 = 1 << OCIE0A;
- 110:	82 e0       	ldi	r24, 0x02	; 2
- 112:	80 93 6e 00 	sts	0x006E, r24
- 116:	08 95       	ret
+  c2:	82 e0       	ldi	r24, 0x02	; 2
+  c4:	80 93 6e 00 	sts	0x006E, r24
+  c8:	08 95       	ret
 
-00000118 <_Z8adc_readh>:
+000000ca <_Z8adc_readh>:
 //}
 
 uint16_t adc_read(uint8_t ch)
 {
 	ch &= 0b00000111;
 	ADMUX = (ADMUX & 0xF8)|ch;
- 118:	ec e7       	ldi	r30, 0x7C	; 124
- 11a:	f0 e0       	ldi	r31, 0x00	; 0
- 11c:	90 81       	ld	r25, Z
+  ca:	ec e7       	ldi	r30, 0x7C	; 124
+  cc:	f0 e0       	ldi	r31, 0x00	; 0
+  ce:	90 81       	ld	r25, Z
 //	USART_Send_string("pt");
 //}
 
 uint16_t adc_read(uint8_t ch)
 {
 	ch &= 0b00000111;
- 11e:	87 70       	andi	r24, 0x07	; 7
+  d0:	87 70       	andi	r24, 0x07	; 7
 	ADMUX = (ADMUX & 0xF8)|ch;
- 120:	98 7f       	andi	r25, 0xF8	; 248
- 122:	98 2b       	or	r25, r24
- 124:	90 83       	st	Z, r25
+  d2:	98 7f       	andi	r25, 0xF8	; 248
+  d4:	98 2b       	or	r25, r24
+  d6:	90 83       	st	Z, r25
 
 	ADCSRA |= (1<<ADSC);
- 126:	ea e7       	ldi	r30, 0x7A	; 122
- 128:	f0 e0       	ldi	r31, 0x00	; 0
- 12a:	80 81       	ld	r24, Z
- 12c:	80 64       	ori	r24, 0x40	; 64
- 12e:	80 83       	st	Z, r24
+  d8:	ea e7       	ldi	r30, 0x7A	; 122
+  da:	f0 e0       	ldi	r31, 0x00	; 0
+  dc:	80 81       	ld	r24, Z
+  de:	80 64       	ori	r24, 0x40	; 64
+  e0:	80 83       	st	Z, r24
 	
 	while(ADCSRA & (1<<ADSC));
- 130:	80 81       	ld	r24, Z
- 132:	86 fd       	sbrc	r24, 6
- 134:	fd cf       	rjmp	.-6      	; 0x130 <_Z8adc_readh+0x18>
+  e2:	80 81       	ld	r24, Z
+  e4:	86 fd       	sbrc	r24, 6
+  e6:	fd cf       	rjmp	.-6      	; 0xe2 <_Z8adc_readh+0x18>
 	
 	return (ADC);
- 136:	80 91 78 00 	lds	r24, 0x0078
- 13a:	90 91 79 00 	lds	r25, 0x0079
+  e8:	80 91 78 00 	lds	r24, 0x0078
+  ec:	90 91 79 00 	lds	r25, 0x0079
 }
- 13e:	08 95       	ret
+  f0:	08 95       	ret
 
-00000140 <_Z5readXv>:
+000000f2 <_Z5readXv>:
 
 uint16_t readX()
 {
 	
 	DDRC &= ~(1<<DDC0 | 1<<DDC2);
- 140:	87 b1       	in	r24, 0x07	; 7
- 142:	8a 7f       	andi	r24, 0xFA	; 250
- 144:	87 b9       	out	0x07, r24	; 7
+  f2:	87 b1       	in	r24, 0x07	; 7
+  f4:	8a 7f       	andi	r24, 0xFA	; 250
+  f6:	87 b9       	out	0x07, r24	; 7
 	DDRC |= (1<<DDC1 | 1<<DDC3);
- 146:	87 b1       	in	r24, 0x07	; 7
- 148:	8a 60       	ori	r24, 0x0A	; 10
- 14a:	87 b9       	out	0x07, r24	; 7
+  f8:	87 b1       	in	r24, 0x07	; 7
+  fa:	8a 60       	ori	r24, 0x0A	; 10
+  fc:	87 b9       	out	0x07, r24	; 7
 	
 	PORTC &= ~(1<<PORTC1);
- 14c:	41 98       	cbi	0x08, 1	; 8
+  fe:	41 98       	cbi	0x08, 1	; 8
 	PORTC |=  (1<<PORTC3);
- 14e:	43 9a       	sbi	0x08, 3	; 8
+ 100:	43 9a       	sbi	0x08, 3	; 8
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 150:	8f e1       	ldi	r24, 0x1F	; 31
- 152:	9e e4       	ldi	r25, 0x4E	; 78
- 154:	01 97       	sbiw	r24, 0x01	; 1
- 156:	f1 f7       	brne	.-4      	; 0x154 <_Z5readXv+0x14>
- 158:	00 c0       	rjmp	.+0      	; 0x15a <_Z5readXv+0x1a>
- 15a:	00 00       	nop
+ 102:	8f e1       	ldi	r24, 0x1F	; 31
+ 104:	9e e4       	ldi	r25, 0x4E	; 78
+ 106:	01 97       	sbiw	r24, 0x01	; 1
+ 108:	f1 f7       	brne	.-4      	; 0x106 <_Z5readXv+0x14>
+ 10a:	00 c0       	rjmp	.+0      	; 0x10c <_Z5readXv+0x1a>
+ 10c:	00 00       	nop
 	
 	_delay_ms(5);
 	
 	return adc_read(0);
- 15c:	80 e0       	ldi	r24, 0x00	; 0
- 15e:	0e 94 8c 00 	call	0x118	; 0x118 <_Z8adc_readh>
+ 10e:	80 e0       	ldi	r24, 0x00	; 0
+ 110:	0e 94 65 00 	call	0xca	; 0xca <_Z8adc_readh>
 	
 }
- 162:	08 95       	ret
+ 114:	08 95       	ret
 
-00000164 <_Z5readYv>:
+00000116 <_Z5readYv>:
 
 uint16_t readY()
 {
 	DDRC &= ~(1<<DDC1 | 1<<DDC3);
- 164:	87 b1       	in	r24, 0x07	; 7
- 166:	85 7f       	andi	r24, 0xF5	; 245
- 168:	87 b9       	out	0x07, r24	; 7
+ 116:	87 b1       	in	r24, 0x07	; 7
+ 118:	85 7f       	andi	r24, 0xF5	; 245
+ 11a:	87 b9       	out	0x07, r24	; 7
 	DDRC |= (1<<DDC0 | 1<<DDC2);
- 16a:	87 b1       	in	r24, 0x07	; 7
- 16c:	85 60       	ori	r24, 0x05	; 5
- 16e:	87 b9       	out	0x07, r24	; 7
+ 11c:	87 b1       	in	r24, 0x07	; 7
+ 11e:	85 60       	ori	r24, 0x05	; 5
+ 120:	87 b9       	out	0x07, r24	; 7
 	
 	PORTC &= ~(1<<PORTC0);
- 170:	40 98       	cbi	0x08, 0	; 8
+ 122:	40 98       	cbi	0x08, 0	; 8
 	PORTC |=  (1<<PORTC2);
- 172:	42 9a       	sbi	0x08, 2	; 8
- 174:	8f e1       	ldi	r24, 0x1F	; 31
- 176:	9e e4       	ldi	r25, 0x4E	; 78
- 178:	01 97       	sbiw	r24, 0x01	; 1
- 17a:	f1 f7       	brne	.-4      	; 0x178 <_Z5readYv+0x14>
- 17c:	00 c0       	rjmp	.+0      	; 0x17e <_Z5readYv+0x1a>
- 17e:	00 00       	nop
+ 124:	42 9a       	sbi	0x08, 2	; 8
+ 126:	8f e1       	ldi	r24, 0x1F	; 31
+ 128:	9e e4       	ldi	r25, 0x4E	; 78
+ 12a:	01 97       	sbiw	r24, 0x01	; 1
+ 12c:	f1 f7       	brne	.-4      	; 0x12a <_Z5readYv+0x14>
+ 12e:	00 c0       	rjmp	.+0      	; 0x130 <_Z5readYv+0x1a>
+ 130:	00 00       	nop
 	
 	_delay_ms(5);
 	
 	return adc_read(1);
- 180:	81 e0       	ldi	r24, 0x01	; 1
- 182:	0e 94 8c 00 	call	0x118	; 0x118 <_Z8adc_readh>
+ 132:	81 e0       	ldi	r24, 0x01	; 1
+ 134:	0e 94 65 00 	call	0xca	; 0xca <_Z8adc_readh>
 }
- 186:	08 95       	ret
+ 138:	08 95       	ret
 
-00000188 <_ZN5PagesC1Ev>:
+0000013a <_ZN5PagesC1Ev>:
 	{
 		//	dispPage3();
 	}
 }
 
  Pages::Pages()
- 188:	cf 93       	push	r28
- 18a:	df 93       	push	r29
+ 13a:	cf 93       	push	r28
+ 13c:	df 93       	push	r29
 {
 	this->lcd.init_lcd();
- 18c:	ec 01       	movw	r28, r24
- 18e:	22 96       	adiw	r28, 0x02	; 2
- 190:	ce 01       	movw	r24, r28
- 192:	0e 94 53 00 	call	0xa6	; 0xa6 <_ZN10LcdDisplay8init_lcdEv>
+ 13e:	ec 01       	movw	r28, r24
+ 140:	22 96       	adiw	r28, 0x02	; 2
+ 142:	ce 01       	movw	r24, r28
+ 144:	0e 94 79 02 	call	0x4f2	; 0x4f2 <_ZN10LcdDisplay8init_lcdEv>
 	this->lcd.clearDisplay();
- 196:	ce 01       	movw	r24, r28
- 198:	0e 94 58 00 	call	0xb0	; 0xb0 <_ZN10LcdDisplay12clearDisplayEv>
+ 148:	ce 01       	movw	r24, r28
+ 14a:	0e 94 7e 02 	call	0x4fc	; 0x4fc <_ZN10LcdDisplay12clearDisplayEv>
 }
- 19c:	df 91       	pop	r29
- 19e:	cf 91       	pop	r28
- 1a0:	08 95       	ret
+ 14e:	df 91       	pop	r29
+ 150:	cf 91       	pop	r28
+ 152:	08 95       	ret
 
-000001a2 <_ZN5Pages9dispPage1Ev>:
+00000154 <_ZN5Pages9dispPage1Ev>:
 
 void Pages::dispPage1()
 {	
- 1a2:	cf 93       	push	r28
- 1a4:	df 93       	push	r29
+ 154:	cf 93       	push	r28
+ 156:	df 93       	push	r29
 	this->pageNo = 1;
- 1a6:	ec 01       	movw	r28, r24
- 1a8:	81 e0       	ldi	r24, 0x01	; 1
- 1aa:	90 e0       	ldi	r25, 0x00	; 0
- 1ac:	89 93       	st	Y+, r24
- 1ae:	99 93       	st	Y+, r25
+ 158:	ec 01       	movw	r28, r24
+ 15a:	81 e0       	ldi	r24, 0x01	; 1
+ 15c:	90 e0       	ldi	r25, 0x00	; 0
+ 15e:	89 93       	st	Y+, r24
+ 160:	99 93       	st	Y+, r25
 	this->lcd.clearDisplay();
- 1b0:	ce 01       	movw	r24, r28
- 1b2:	0e 94 58 00 	call	0xb0	; 0xb0 <_ZN10LcdDisplay12clearDisplayEv>
+ 162:	ce 01       	movw	r24, r28
+ 164:	0e 94 7e 02 	call	0x4fc	; 0x4fc <_ZN10LcdDisplay12clearDisplayEv>
 	this->lcd.displayString("Servo");
- 1b6:	60 e0       	ldi	r22, 0x00	; 0
- 1b8:	71 e0       	ldi	r23, 0x01	; 1
- 1ba:	ce 01       	movw	r24, r28
- 1bc:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 168:	60 e0       	ldi	r22, 0x00	; 0
+ 16a:	71 e0       	ldi	r23, 0x01	; 1
+ 16c:	ce 01       	movw	r24, r28
+ 16e:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 //	this->lcd.gotoXY(1,10);
 //	this->lcd.displayString("Home");
 	this->lcd.gotoXY(2,10);
- 1c0:	4a e0       	ldi	r20, 0x0A	; 10
- 1c2:	50 e0       	ldi	r21, 0x00	; 0
- 1c4:	62 e0       	ldi	r22, 0x02	; 2
- 1c6:	ce 01       	movw	r24, r28
- 1c8:	0e 94 63 00 	call	0xc6	; 0xc6 <_ZN10LcdDisplay6gotoXYEhj>
+ 172:	4a e0       	ldi	r20, 0x0A	; 10
+ 174:	50 e0       	ldi	r21, 0x00	; 0
+ 176:	62 e0       	ldi	r22, 0x02	; 2
+ 178:	ce 01       	movw	r24, r28
+ 17a:	0e 94 89 02 	call	0x512	; 0x512 <_ZN10LcdDisplay6gotoXYEhj>
 	this->lcd.displayString("Stepper");
- 1cc:	66 e0       	ldi	r22, 0x06	; 6
- 1ce:	71 e0       	ldi	r23, 0x01	; 1
- 1d0:	ce 01       	movw	r24, r28
- 1d2:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 17e:	66 e0       	ldi	r22, 0x06	; 6
+ 180:	71 e0       	ldi	r23, 0x01	; 1
+ 182:	ce 01       	movw	r24, r28
+ 184:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 }
- 1d6:	df 91       	pop	r29
- 1d8:	cf 91       	pop	r28
- 1da:	08 95       	ret
+ 188:	df 91       	pop	r29
+ 18a:	cf 91       	pop	r28
+ 18c:	08 95       	ret
 
-000001dc <_ZN5Pages9introPageEv>:
+0000018e <_ZN5Pages9introPageEv>:
 			this->page3Action(posx,posy);
 	}
 }
 
 void Pages::introPage()
 {
- 1dc:	0f 93       	push	r16
- 1de:	1f 93       	push	r17
- 1e0:	cf 93       	push	r28
- 1e2:	df 93       	push	r29
- 1e4:	8c 01       	movw	r16, r24
+ 18e:	0f 93       	push	r16
+ 190:	1f 93       	push	r17
+ 192:	cf 93       	push	r28
+ 194:	df 93       	push	r29
+ 196:	8c 01       	movw	r16, r24
 	lcd.clearDisplay();
- 1e6:	ec 01       	movw	r28, r24
- 1e8:	22 96       	adiw	r28, 0x02	; 2
- 1ea:	ce 01       	movw	r24, r28
- 1ec:	0e 94 58 00 	call	0xb0	; 0xb0 <_ZN10LcdDisplay12clearDisplayEv>
+ 198:	ec 01       	movw	r28, r24
+ 19a:	22 96       	adiw	r28, 0x02	; 2
+ 19c:	ce 01       	movw	r24, r28
+ 19e:	0e 94 7e 02 	call	0x4fc	; 0x4fc <_ZN10LcdDisplay12clearDisplayEv>
 	lcd.gotoXY(1,4)	;
- 1f0:	44 e0       	ldi	r20, 0x04	; 4
- 1f2:	50 e0       	ldi	r21, 0x00	; 0
- 1f4:	61 e0       	ldi	r22, 0x01	; 1
- 1f6:	ce 01       	movw	r24, r28
- 1f8:	0e 94 63 00 	call	0xc6	; 0xc6 <_ZN10LcdDisplay6gotoXYEhj>
+ 1a2:	44 e0       	ldi	r20, 0x04	; 4
+ 1a4:	50 e0       	ldi	r21, 0x00	; 0
+ 1a6:	61 e0       	ldi	r22, 0x01	; 1
+ 1a8:	ce 01       	movw	r24, r28
+ 1aa:	0e 94 89 02 	call	0x512	; 0x512 <_ZN10LcdDisplay6gotoXYEhj>
 	lcd.displayString("Welcome to ");
- 1fc:	6e e0       	ldi	r22, 0x0E	; 14
- 1fe:	71 e0       	ldi	r23, 0x01	; 1
- 200:	ce 01       	movw	r24, r28
- 202:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 1ae:	6e e0       	ldi	r22, 0x0E	; 14
+ 1b0:	71 e0       	ldi	r23, 0x01	; 1
+ 1b2:	ce 01       	movw	r24, r28
+ 1b4:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 	lcd.gotoXY(2,4)	;
- 206:	44 e0       	ldi	r20, 0x04	; 4
- 208:	50 e0       	ldi	r21, 0x00	; 0
- 20a:	62 e0       	ldi	r22, 0x02	; 2
- 20c:	ce 01       	movw	r24, r28
- 20e:	0e 94 63 00 	call	0xc6	; 0xc6 <_ZN10LcdDisplay6gotoXYEhj>
+ 1b8:	44 e0       	ldi	r20, 0x04	; 4
+ 1ba:	50 e0       	ldi	r21, 0x00	; 0
+ 1bc:	62 e0       	ldi	r22, 0x02	; 2
+ 1be:	ce 01       	movw	r24, r28
+ 1c0:	0e 94 89 02 	call	0x512	; 0x512 <_ZN10LcdDisplay6gotoXYEhj>
 	lcd.displayString("Johny's Proj");
- 212:	6a e1       	ldi	r22, 0x1A	; 26
- 214:	71 e0       	ldi	r23, 0x01	; 1
- 216:	ce 01       	movw	r24, r28
- 218:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
- 21c:	2f ef       	ldi	r18, 0xFF	; 255
- 21e:	87 ea       	ldi	r24, 0xA7	; 167
- 220:	91 e6       	ldi	r25, 0x61	; 97
- 222:	21 50       	subi	r18, 0x01	; 1
- 224:	80 40       	sbci	r24, 0x00	; 0
- 226:	90 40       	sbci	r25, 0x00	; 0
- 228:	e1 f7       	brne	.-8      	; 0x222 <_ZN5Pages9introPageEv+0x46>
- 22a:	00 c0       	rjmp	.+0      	; 0x22c <_ZN5Pages9introPageEv+0x50>
- 22c:	00 00       	nop
+ 1c4:	6a e1       	ldi	r22, 0x1A	; 26
+ 1c6:	71 e0       	ldi	r23, 0x01	; 1
+ 1c8:	ce 01       	movw	r24, r28
+ 1ca:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
+ 1ce:	2f ef       	ldi	r18, 0xFF	; 255
+ 1d0:	87 ea       	ldi	r24, 0xA7	; 167
+ 1d2:	91 e6       	ldi	r25, 0x61	; 97
+ 1d4:	21 50       	subi	r18, 0x01	; 1
+ 1d6:	80 40       	sbci	r24, 0x00	; 0
+ 1d8:	90 40       	sbci	r25, 0x00	; 0
+ 1da:	e1 f7       	brne	.-8      	; 0x1d4 <_ZN5Pages9introPageEv+0x46>
+ 1dc:	00 c0       	rjmp	.+0      	; 0x1de <_ZN5Pages9introPageEv+0x50>
+ 1de:	00 00       	nop
 	_delay_ms(2000);
 	this->dispPage1();
- 22e:	c8 01       	movw	r24, r16
- 230:	0e 94 d1 00 	call	0x1a2	; 0x1a2 <_ZN5Pages9dispPage1Ev>
+ 1e0:	c8 01       	movw	r24, r16
+ 1e2:	0e 94 aa 00 	call	0x154	; 0x154 <_ZN5Pages9dispPage1Ev>
 }
- 234:	df 91       	pop	r29
- 236:	cf 91       	pop	r28
- 238:	1f 91       	pop	r17
- 23a:	0f 91       	pop	r16
- 23c:	08 95       	ret
+ 1e6:	df 91       	pop	r29
+ 1e8:	cf 91       	pop	r28
+ 1ea:	1f 91       	pop	r17
+ 1ec:	0f 91       	pop	r16
+ 1ee:	08 95       	ret
 
-0000023e <_ZN5Pages11page2ActionEjj>:
+000001f0 <_ZN5Pages11page2ActionEjj>:
 	this->lcd.displayString("- - -160");
 }
 
 bool Pages::range(int num,int max,int min)
 {
 	return (num<max && num>min)?true:false;
- 23e:	9b 01       	movw	r18, r22
- 240:	21 52       	subi	r18, 0x21	; 33
- 242:	33 40       	sbci	r19, 0x03	; 3
- 244:	25 39       	cpi	r18, 0x95	; 149
- 246:	31 05       	cpc	r19, r1
- 248:	30 f4       	brcc	.+12     	; 0x256 <_ZN5Pages11page2ActionEjj+0x18>
- 24a:	9a 01       	movw	r18, r20
- 24c:	21 52       	subi	r18, 0x21	; 33
- 24e:	33 40       	sbci	r19, 0x03	; 3
- 250:	25 39       	cpi	r18, 0x95	; 149
- 252:	31 05       	cpc	r19, r1
- 254:	c0 f0       	brcs	.+48     	; 0x286 <_ZN5Pages11page2ActionEjj+0x48>
- 256:	9b 01       	movw	r18, r22
- 258:	25 56       	subi	r18, 0x65	; 101
- 25a:	31 09       	sbc	r19, r1
- 25c:	23 3b       	cpi	r18, 0xB3	; 179
- 25e:	31 05       	cpc	r19, r1
- 260:	30 f4       	brcc	.+12     	; 0x26e <_ZN5Pages11page2ActionEjj+0x30>
- 262:	9a 01       	movw	r18, r20
- 264:	21 52       	subi	r18, 0x21	; 33
- 266:	33 40       	sbci	r19, 0x03	; 3
- 268:	25 39       	cpi	r18, 0x95	; 149
- 26a:	31 05       	cpc	r19, r1
- 26c:	60 f0       	brcs	.+24     	; 0x286 <_ZN5Pages11page2ActionEjj+0x48>
- 26e:	61 59       	subi	r22, 0x91	; 145
- 270:	71 40       	sbci	r23, 0x01	; 1
- 272:	63 30       	cpi	r22, 0x03	; 3
- 274:	71 40       	sbci	r23, 0x01	; 1
- 276:	38 f4       	brcc	.+14     	; 0x286 <_ZN5Pages11page2ActionEjj+0x48>
- 278:	41 52       	subi	r20, 0x21	; 33
- 27a:	53 40       	sbci	r21, 0x03	; 3
- 27c:	45 39       	cpi	r20, 0x95	; 149
- 27e:	51 05       	cpc	r21, r1
- 280:	10 f4       	brcc	.+4      	; 0x286 <_ZN5Pages11page2ActionEjj+0x48>
+ 1f0:	9b 01       	movw	r18, r22
+ 1f2:	21 52       	subi	r18, 0x21	; 33
+ 1f4:	33 40       	sbci	r19, 0x03	; 3
+ 1f6:	25 39       	cpi	r18, 0x95	; 149
+ 1f8:	31 05       	cpc	r19, r1
+ 1fa:	30 f4       	brcc	.+12     	; 0x208 <_ZN5Pages11page2ActionEjj+0x18>
+ 1fc:	9a 01       	movw	r18, r20
+ 1fe:	21 52       	subi	r18, 0x21	; 33
+ 200:	33 40       	sbci	r19, 0x03	; 3
+ 202:	25 39       	cpi	r18, 0x95	; 149
+ 204:	31 05       	cpc	r19, r1
+ 206:	c0 f0       	brcs	.+48     	; 0x238 <_ZN5Pages11page2ActionEjj+0x48>
+ 208:	9b 01       	movw	r18, r22
+ 20a:	25 56       	subi	r18, 0x65	; 101
+ 20c:	31 09       	sbc	r19, r1
+ 20e:	23 3b       	cpi	r18, 0xB3	; 179
+ 210:	31 05       	cpc	r19, r1
+ 212:	30 f4       	brcc	.+12     	; 0x220 <_ZN5Pages11page2ActionEjj+0x30>
+ 214:	9a 01       	movw	r18, r20
+ 216:	21 52       	subi	r18, 0x21	; 33
+ 218:	33 40       	sbci	r19, 0x03	; 3
+ 21a:	25 39       	cpi	r18, 0x95	; 149
+ 21c:	31 05       	cpc	r19, r1
+ 21e:	60 f0       	brcs	.+24     	; 0x238 <_ZN5Pages11page2ActionEjj+0x48>
+ 220:	61 59       	subi	r22, 0x91	; 145
+ 222:	71 40       	sbci	r23, 0x01	; 1
+ 224:	63 30       	cpi	r22, 0x03	; 3
+ 226:	71 40       	sbci	r23, 0x01	; 1
+ 228:	38 f4       	brcc	.+14     	; 0x238 <_ZN5Pages11page2ActionEjj+0x48>
+ 22a:	41 52       	subi	r20, 0x21	; 33
+ 22c:	53 40       	sbci	r21, 0x03	; 3
+ 22e:	45 39       	cpi	r20, 0x95	; 149
+ 230:	51 05       	cpc	r21, r1
+ 232:	10 f4       	brcc	.+4      	; 0x238 <_ZN5Pages11page2ActionEjj+0x48>
 	{
 	//	dispPage3();
 	}
 	else if(range(posx,660,400) && range(posy,950,800))
 	{
 		dispPage1();
- 282:	0e 94 d1 00 	call	0x1a2	; 0x1a2 <_ZN5Pages9dispPage1Ev>
- 286:	08 95       	ret
+ 234:	0e 94 aa 00 	call	0x154	; 0x154 <_ZN5Pages9dispPage1Ev>
+ 238:	08 95       	ret
 
-00000288 <_ZN5Pages11page3ActionEjj>:
+0000023a <_ZN5Pages11page3ActionEjj>:
 	this->lcd.displayString("- - -160");
 }
 
 bool Pages::range(int num,int max,int min)
 {
 	return (num<max && num>min)?true:false;
- 288:	9b 01       	movw	r18, r22
- 28a:	2f 54       	subi	r18, 0x4F	; 79
- 28c:	32 40       	sbci	r19, 0x02	; 2
- 28e:	27 36       	cpi	r18, 0x67	; 103
- 290:	31 40       	sbci	r19, 0x01	; 1
- 292:	30 f4       	brcc	.+12     	; 0x2a0 <_ZN5Pages11page3ActionEjj+0x18>
- 294:	9a 01       	movw	r18, r20
- 296:	21 52       	subi	r18, 0x21	; 33
- 298:	33 40       	sbci	r19, 0x03	; 3
- 29a:	25 39       	cpi	r18, 0x95	; 149
- 29c:	31 05       	cpc	r19, r1
- 29e:	60 f0       	brcs	.+24     	; 0x2b8 <_ZN5Pages11page3ActionEjj+0x30>
- 2a0:	65 56       	subi	r22, 0x65	; 101
- 2a2:	71 09       	sbc	r23, r1
- 2a4:	6d 30       	cpi	r22, 0x0D	; 13
- 2a6:	71 40       	sbci	r23, 0x01	; 1
- 2a8:	38 f4       	brcc	.+14     	; 0x2b8 <_ZN5Pages11page3ActionEjj+0x30>
- 2aa:	41 52       	subi	r20, 0x21	; 33
- 2ac:	53 40       	sbci	r21, 0x03	; 3
- 2ae:	45 39       	cpi	r20, 0x95	; 149
- 2b0:	51 05       	cpc	r21, r1
- 2b2:	10 f4       	brcc	.+4      	; 0x2b8 <_ZN5Pages11page3ActionEjj+0x30>
+ 23a:	9b 01       	movw	r18, r22
+ 23c:	2f 54       	subi	r18, 0x4F	; 79
+ 23e:	32 40       	sbci	r19, 0x02	; 2
+ 240:	27 36       	cpi	r18, 0x67	; 103
+ 242:	31 40       	sbci	r19, 0x01	; 1
+ 244:	30 f4       	brcc	.+12     	; 0x252 <_ZN5Pages11page3ActionEjj+0x18>
+ 246:	9a 01       	movw	r18, r20
+ 248:	21 52       	subi	r18, 0x21	; 33
+ 24a:	33 40       	sbci	r19, 0x03	; 3
+ 24c:	25 39       	cpi	r18, 0x95	; 149
+ 24e:	31 05       	cpc	r19, r1
+ 250:	60 f0       	brcs	.+24     	; 0x26a <_ZN5Pages11page3ActionEjj+0x30>
+ 252:	65 56       	subi	r22, 0x65	; 101
+ 254:	71 09       	sbc	r23, r1
+ 256:	6d 30       	cpi	r22, 0x0D	; 13
+ 258:	71 40       	sbci	r23, 0x01	; 1
+ 25a:	38 f4       	brcc	.+14     	; 0x26a <_ZN5Pages11page3ActionEjj+0x30>
+ 25c:	41 52       	subi	r20, 0x21	; 33
+ 25e:	53 40       	sbci	r21, 0x03	; 3
+ 260:	45 39       	cpi	r20, 0x95	; 149
+ 262:	51 05       	cpc	r21, r1
+ 264:	10 f4       	brcc	.+4      	; 0x26a <_ZN5Pages11page3ActionEjj+0x30>
 	{
 		//	dispPage2();
 	}
 	else if(range(posx,370,100) && range(posy,950,800))
 	{
 		dispPage1();
- 2b4:	0e 94 d1 00 	call	0x1a2	; 0x1a2 <_ZN5Pages9dispPage1Ev>
- 2b8:	08 95       	ret
+ 266:	0e 94 aa 00 	call	0x154	; 0x154 <_ZN5Pages9dispPage1Ev>
+ 26a:	08 95       	ret
 
-000002ba <_ZN5Pages9dispPage2Ev>:
+0000026c <_ZN5Pages9dispPage2Ev>:
 	this->lcd.gotoXY(2,10);
 	this->lcd.displayString("Stepper");
 }
 
 void Pages::dispPage2()
 {
- 2ba:	cf 93       	push	r28
- 2bc:	df 93       	push	r29
+ 26c:	cf 93       	push	r28
+ 26e:	df 93       	push	r29
 	this->pageNo = 2;
- 2be:	ec 01       	movw	r28, r24
- 2c0:	82 e0       	ldi	r24, 0x02	; 2
- 2c2:	90 e0       	ldi	r25, 0x00	; 0
- 2c4:	89 93       	st	Y+, r24
- 2c6:	99 93       	st	Y+, r25
+ 270:	ec 01       	movw	r28, r24
+ 272:	82 e0       	ldi	r24, 0x02	; 2
+ 274:	90 e0       	ldi	r25, 0x00	; 0
+ 276:	89 93       	st	Y+, r24
+ 278:	99 93       	st	Y+, r25
 	this->lcd.clearDisplay();
- 2c8:	ce 01       	movw	r24, r28
- 2ca:	0e 94 58 00 	call	0xb0	; 0xb0 <_ZN10LcdDisplay12clearDisplayEv>
+ 27a:	ce 01       	movw	r24, r28
+ 27c:	0e 94 7e 02 	call	0x4fc	; 0x4fc <_ZN10LcdDisplay12clearDisplayEv>
 	this->lcd.displayString("CW");
- 2ce:	6d e2       	ldi	r22, 0x2D	; 45
- 2d0:	71 e0       	ldi	r23, 0x01	; 1
- 2d2:	ce 01       	movw	r24, r28
- 2d4:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 280:	6d e2       	ldi	r22, 0x2D	; 45
+ 282:	71 e0       	ldi	r23, 0x01	; 1
+ 284:	ce 01       	movw	r24, r28
+ 286:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 	this->lcd.gotoXY(1,7);
- 2d8:	47 e0       	ldi	r20, 0x07	; 7
- 2da:	50 e0       	ldi	r21, 0x00	; 0
- 2dc:	61 e0       	ldi	r22, 0x01	; 1
- 2de:	ce 01       	movw	r24, r28
- 2e0:	0e 94 63 00 	call	0xc6	; 0xc6 <_ZN10LcdDisplay6gotoXYEhj>
+ 28a:	47 e0       	ldi	r20, 0x07	; 7
+ 28c:	50 e0       	ldi	r21, 0x00	; 0
+ 28e:	61 e0       	ldi	r22, 0x01	; 1
+ 290:	ce 01       	movw	r24, r28
+ 292:	0e 94 89 02 	call	0x512	; 0x512 <_ZN10LcdDisplay6gotoXYEhj>
 	this->lcd.displayString("Home");
- 2e4:	67 e2       	ldi	r22, 0x27	; 39
- 2e6:	71 e0       	ldi	r23, 0x01	; 1
- 2e8:	ce 01       	movw	r24, r28
- 2ea:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 296:	67 e2       	ldi	r22, 0x27	; 39
+ 298:	71 e0       	ldi	r23, 0x01	; 1
+ 29a:	ce 01       	movw	r24, r28
+ 29c:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 	this->lcd.gotoXY(1,14);
- 2ee:	4e e0       	ldi	r20, 0x0E	; 14
- 2f0:	50 e0       	ldi	r21, 0x00	; 0
- 2f2:	61 e0       	ldi	r22, 0x01	; 1
- 2f4:	ce 01       	movw	r24, r28
- 2f6:	0e 94 63 00 	call	0xc6	; 0xc6 <_ZN10LcdDisplay6gotoXYEhj>
+ 2a0:	4e e0       	ldi	r20, 0x0E	; 14
+ 2a2:	50 e0       	ldi	r21, 0x00	; 0
+ 2a4:	61 e0       	ldi	r22, 0x01	; 1
+ 2a6:	ce 01       	movw	r24, r28
+ 2a8:	0e 94 89 02 	call	0x512	; 0x512 <_ZN10LcdDisplay6gotoXYEhj>
 	this->lcd.displayString("CCW");
- 2fa:	6c e2       	ldi	r22, 0x2C	; 44
- 2fc:	71 e0       	ldi	r23, 0x01	; 1
- 2fe:	ce 01       	movw	r24, r28
- 300:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 2ac:	6c e2       	ldi	r22, 0x2C	; 44
+ 2ae:	71 e0       	ldi	r23, 0x01	; 1
+ 2b0:	ce 01       	movw	r24, r28
+ 2b2:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 	this->lcd.gotoXY(2,1);
- 304:	41 e0       	ldi	r20, 0x01	; 1
- 306:	50 e0       	ldi	r21, 0x00	; 0
- 308:	62 e0       	ldi	r22, 0x02	; 2
- 30a:	ce 01       	movw	r24, r28
- 30c:	0e 94 63 00 	call	0xc6	; 0xc6 <_ZN10LcdDisplay6gotoXYEhj>
+ 2b6:	41 e0       	ldi	r20, 0x01	; 1
+ 2b8:	50 e0       	ldi	r21, 0x00	; 0
+ 2ba:	62 e0       	ldi	r22, 0x02	; 2
+ 2bc:	ce 01       	movw	r24, r28
+ 2be:	0e 94 89 02 	call	0x512	; 0x512 <_ZN10LcdDisplay6gotoXYEhj>
 	this->lcd.displayString("0 - - -");
- 310:	60 e3       	ldi	r22, 0x30	; 48
- 312:	71 e0       	ldi	r23, 0x01	; 1
- 314:	ce 01       	movw	r24, r28
- 316:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 2c2:	60 e3       	ldi	r22, 0x30	; 48
+ 2c4:	71 e0       	ldi	r23, 0x01	; 1
+ 2c6:	ce 01       	movw	r24, r28
+ 2c8:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 	this->lcd.gotoXY(2,9);
- 31a:	49 e0       	ldi	r20, 0x09	; 9
- 31c:	50 e0       	ldi	r21, 0x00	; 0
- 31e:	62 e0       	ldi	r22, 0x02	; 2
- 320:	ce 01       	movw	r24, r28
- 322:	0e 94 63 00 	call	0xc6	; 0xc6 <_ZN10LcdDisplay6gotoXYEhj>
+ 2cc:	49 e0       	ldi	r20, 0x09	; 9
+ 2ce:	50 e0       	ldi	r21, 0x00	; 0
+ 2d0:	62 e0       	ldi	r22, 0x02	; 2
+ 2d2:	ce 01       	movw	r24, r28
+ 2d4:	0e 94 89 02 	call	0x512	; 0x512 <_ZN10LcdDisplay6gotoXYEhj>
 	this->lcd.displayString("- - -360");
- 326:	68 e3       	ldi	r22, 0x38	; 56
- 328:	71 e0       	ldi	r23, 0x01	; 1
- 32a:	ce 01       	movw	r24, r28
- 32c:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 2d8:	68 e3       	ldi	r22, 0x38	; 56
+ 2da:	71 e0       	ldi	r23, 0x01	; 1
+ 2dc:	ce 01       	movw	r24, r28
+ 2de:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 }
- 330:	df 91       	pop	r29
- 332:	cf 91       	pop	r28
- 334:	08 95       	ret
+ 2e2:	df 91       	pop	r29
+ 2e4:	cf 91       	pop	r28
+ 2e6:	08 95       	ret
 
-00000336 <_ZN5Pages9dispPage3Ev>:
+000002e8 <_ZN5Pages9dispPage3Ev>:
 
 void Pages::dispPage3()
 {
- 336:	cf 93       	push	r28
- 338:	df 93       	push	r29
+ 2e8:	cf 93       	push	r28
+ 2ea:	df 93       	push	r29
 	this->pageNo = 3;
- 33a:	ec 01       	movw	r28, r24
- 33c:	83 e0       	ldi	r24, 0x03	; 3
- 33e:	90 e0       	ldi	r25, 0x00	; 0
- 340:	89 93       	st	Y+, r24
- 342:	99 93       	st	Y+, r25
+ 2ec:	ec 01       	movw	r28, r24
+ 2ee:	83 e0       	ldi	r24, 0x03	; 3
+ 2f0:	90 e0       	ldi	r25, 0x00	; 0
+ 2f2:	89 93       	st	Y+, r24
+ 2f4:	99 93       	st	Y+, r25
 	this->lcd.clearDisplay();
- 344:	ce 01       	movw	r24, r28
- 346:	0e 94 58 00 	call	0xb0	; 0xb0 <_ZN10LcdDisplay12clearDisplayEv>
+ 2f6:	ce 01       	movw	r24, r28
+ 2f8:	0e 94 7e 02 	call	0x4fc	; 0x4fc <_ZN10LcdDisplay12clearDisplayEv>
 	this->lcd.displayString("Servo");
- 34a:	60 e0       	ldi	r22, 0x00	; 0
- 34c:	71 e0       	ldi	r23, 0x01	; 1
- 34e:	ce 01       	movw	r24, r28
- 350:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 2fc:	60 e0       	ldi	r22, 0x00	; 0
+ 2fe:	71 e0       	ldi	r23, 0x01	; 1
+ 300:	ce 01       	movw	r24, r28
+ 302:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 	this->lcd.gotoXY(1,13);
- 354:	4d e0       	ldi	r20, 0x0D	; 13
- 356:	50 e0       	ldi	r21, 0x00	; 0
- 358:	61 e0       	ldi	r22, 0x01	; 1
- 35a:	ce 01       	movw	r24, r28
- 35c:	0e 94 63 00 	call	0xc6	; 0xc6 <_ZN10LcdDisplay6gotoXYEhj>
+ 306:	4d e0       	ldi	r20, 0x0D	; 13
+ 308:	50 e0       	ldi	r21, 0x00	; 0
+ 30a:	61 e0       	ldi	r22, 0x01	; 1
+ 30c:	ce 01       	movw	r24, r28
+ 30e:	0e 94 89 02 	call	0x512	; 0x512 <_ZN10LcdDisplay6gotoXYEhj>
 	this->lcd.displayString("Home");
- 360:	67 e2       	ldi	r22, 0x27	; 39
- 362:	71 e0       	ldi	r23, 0x01	; 1
- 364:	ce 01       	movw	r24, r28
- 366:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 312:	67 e2       	ldi	r22, 0x27	; 39
+ 314:	71 e0       	ldi	r23, 0x01	; 1
+ 316:	ce 01       	movw	r24, r28
+ 318:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 	this->lcd.gotoXY(2,1);
- 36a:	41 e0       	ldi	r20, 0x01	; 1
- 36c:	50 e0       	ldi	r21, 0x00	; 0
- 36e:	62 e0       	ldi	r22, 0x02	; 2
- 370:	ce 01       	movw	r24, r28
- 372:	0e 94 63 00 	call	0xc6	; 0xc6 <_ZN10LcdDisplay6gotoXYEhj>
+ 31c:	41 e0       	ldi	r20, 0x01	; 1
+ 31e:	50 e0       	ldi	r21, 0x00	; 0
+ 320:	62 e0       	ldi	r22, 0x02	; 2
+ 322:	ce 01       	movw	r24, r28
+ 324:	0e 94 89 02 	call	0x512	; 0x512 <_ZN10LcdDisplay6gotoXYEhj>
 	this->lcd.displayString("0 - - -");
- 376:	60 e3       	ldi	r22, 0x30	; 48
- 378:	71 e0       	ldi	r23, 0x01	; 1
- 37a:	ce 01       	movw	r24, r28
- 37c:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 328:	60 e3       	ldi	r22, 0x30	; 48
+ 32a:	71 e0       	ldi	r23, 0x01	; 1
+ 32c:	ce 01       	movw	r24, r28
+ 32e:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 	this->lcd.gotoXY(2,9);
- 380:	49 e0       	ldi	r20, 0x09	; 9
- 382:	50 e0       	ldi	r21, 0x00	; 0
- 384:	62 e0       	ldi	r22, 0x02	; 2
- 386:	ce 01       	movw	r24, r28
- 388:	0e 94 63 00 	call	0xc6	; 0xc6 <_ZN10LcdDisplay6gotoXYEhj>
+ 332:	49 e0       	ldi	r20, 0x09	; 9
+ 334:	50 e0       	ldi	r21, 0x00	; 0
+ 336:	62 e0       	ldi	r22, 0x02	; 2
+ 338:	ce 01       	movw	r24, r28
+ 33a:	0e 94 89 02 	call	0x512	; 0x512 <_ZN10LcdDisplay6gotoXYEhj>
 	this->lcd.displayString("- - -160");
- 38c:	61 e4       	ldi	r22, 0x41	; 65
- 38e:	71 e0       	ldi	r23, 0x01	; 1
- 390:	ce 01       	movw	r24, r28
- 392:	0e 94 5f 00 	call	0xbe	; 0xbe <_ZN10LcdDisplay13displayStringEPKc>
+ 33e:	61 e4       	ldi	r22, 0x41	; 65
+ 340:	71 e0       	ldi	r23, 0x01	; 1
+ 342:	ce 01       	movw	r24, r28
+ 344:	0e 94 85 02 	call	0x50a	; 0x50a <_ZN10LcdDisplay13displayStringEPKc>
 }
- 396:	df 91       	pop	r29
- 398:	cf 91       	pop	r28
- 39a:	08 95       	ret
+ 348:	df 91       	pop	r29
+ 34a:	cf 91       	pop	r28
+ 34c:	08 95       	ret
 
-0000039c <_ZN5Pages11page1ActionEjj>:
+0000034e <_ZN5Pages11page1ActionEjj>:
 
 bool Pages::range(int num,int max,int min)
 {
 	return (num<max && num>min)?true:false;
- 39c:	9b 01       	movw	r18, r22
- 39e:	21 53       	subi	r18, 0x31	; 49
- 3a0:	32 40       	sbci	r19, 0x02	; 2
- 3a2:	25 38       	cpi	r18, 0x85	; 133
- 3a4:	31 40       	sbci	r19, 0x01	; 1
- 3a6:	30 f4       	brcc	.+12     	; 0x3b4 <_ZN5Pages11page1ActionEjj+0x18>
- 3a8:	9a 01       	movw	r18, r20
- 3aa:	21 52       	subi	r18, 0x21	; 33
- 3ac:	33 40       	sbci	r19, 0x03	; 3
- 3ae:	25 39       	cpi	r18, 0x95	; 149
- 3b0:	31 05       	cpc	r19, r1
- 3b2:	58 f0       	brcs	.+22     	; 0x3ca <_ZN5Pages11page1ActionEjj+0x2e>
- 3b4:	65 56       	subi	r22, 0x65	; 101
- 3b6:	71 09       	sbc	r23, r1
- 3b8:	6d 35       	cpi	r22, 0x5D	; 93
- 3ba:	71 40       	sbci	r23, 0x01	; 1
- 3bc:	58 f4       	brcc	.+22     	; 0x3d4 <_ZN5Pages11page1ActionEjj+0x38>
- 3be:	4d 5b       	subi	r20, 0xBD	; 189
- 3c0:	52 40       	sbci	r21, 0x02	; 2
- 3c2:	49 35       	cpi	r20, 0x59	; 89
- 3c4:	51 05       	cpc	r21, r1
- 3c6:	30 f4       	brcc	.+12     	; 0x3d4 <_ZN5Pages11page1ActionEjj+0x38>
- 3c8:	03 c0       	rjmp	.+6      	; 0x3d0 <_ZN5Pages11page1ActionEjj+0x34>
+ 34e:	9b 01       	movw	r18, r22
+ 350:	21 53       	subi	r18, 0x31	; 49
+ 352:	32 40       	sbci	r19, 0x02	; 2
+ 354:	25 38       	cpi	r18, 0x85	; 133
+ 356:	31 40       	sbci	r19, 0x01	; 1
+ 358:	30 f4       	brcc	.+12     	; 0x366 <_ZN5Pages11page1ActionEjj+0x18>
+ 35a:	9a 01       	movw	r18, r20
+ 35c:	21 52       	subi	r18, 0x21	; 33
+ 35e:	33 40       	sbci	r19, 0x03	; 3
+ 360:	25 39       	cpi	r18, 0x95	; 149
+ 362:	31 05       	cpc	r19, r1
+ 364:	58 f0       	brcs	.+22     	; 0x37c <_ZN5Pages11page1ActionEjj+0x2e>
+ 366:	65 56       	subi	r22, 0x65	; 101
+ 368:	71 09       	sbc	r23, r1
+ 36a:	6d 35       	cpi	r22, 0x5D	; 93
+ 36c:	71 40       	sbci	r23, 0x01	; 1
+ 36e:	58 f4       	brcc	.+22     	; 0x386 <_ZN5Pages11page1ActionEjj+0x38>
+ 370:	4d 5b       	subi	r20, 0xBD	; 189
+ 372:	52 40       	sbci	r21, 0x02	; 2
+ 374:	49 35       	cpi	r20, 0x59	; 89
+ 376:	51 05       	cpc	r21, r1
+ 378:	30 f4       	brcc	.+12     	; 0x386 <_ZN5Pages11page1ActionEjj+0x38>
+ 37a:	03 c0       	rjmp	.+6      	; 0x382 <_ZN5Pages11page1ActionEjj+0x34>
 
 void Pages::page1Action(uint16_t posx,uint16_t posy)
 {
 	if(range(posx,950,560) && range(posy,950,800))
 	{
 		dispPage3();
- 3ca:	0e 94 9b 01 	call	0x336	; 0x336 <_ZN5Pages9dispPage3Ev>
- 3ce:	08 95       	ret
+ 37c:	0e 94 74 01 	call	0x2e8	; 0x2e8 <_ZN5Pages9dispPage3Ev>
+ 380:	08 95       	ret
 	}
 	else if(range(posx,450,100) && range(posy,790,700))
 	{
 		dispPage2();
- 3d0:	0e 94 5d 01 	call	0x2ba	; 0x2ba <_ZN5Pages9dispPage2Ev>
- 3d4:	08 95       	ret
+ 382:	0e 94 36 01 	call	0x26c	; 0x26c <_ZN5Pages9dispPage2Ev>
+ 386:	08 95       	ret
 
-000003d6 <_ZN5Pages12chooseActionEjj>:
+00000388 <_ZN5Pages12chooseActionEjj>:
 	this->lcd.displayString("- - -160");
 }
 
 bool Pages::range(int num,int max,int min)
 {
 	return (num<max && num>min)?true:false;
- 3d6:	9b 01       	movw	r18, r22
- 3d8:	26 50       	subi	r18, 0x06	; 6
- 3da:	31 09       	sbc	r19, r1
- 3dc:	20 3b       	cpi	r18, 0xB0	; 176
- 3de:	33 40       	sbci	r19, 0x03	; 3
- 3e0:	e8 f4       	brcc	.+58     	; 0x41c <_ZN5Pages12chooseActionEjj+0x46>
- 3e2:	9a 01       	movw	r18, r20
- 3e4:	26 50       	subi	r18, 0x06	; 6
- 3e6:	31 09       	sbc	r19, r1
- 3e8:	20 3b       	cpi	r18, 0xB0	; 176
- 3ea:	33 40       	sbci	r19, 0x03	; 3
- 3ec:	b8 f4       	brcc	.+46     	; 0x41c <_ZN5Pages12chooseActionEjj+0x46>
- 3ee:	0f c0       	rjmp	.+30     	; 0x40e <_ZN5Pages12chooseActionEjj+0x38>
+ 388:	9b 01       	movw	r18, r22
+ 38a:	26 50       	subi	r18, 0x06	; 6
+ 38c:	31 09       	sbc	r19, r1
+ 38e:	20 3b       	cpi	r18, 0xB0	; 176
+ 390:	33 40       	sbci	r19, 0x03	; 3
+ 392:	e8 f4       	brcc	.+58     	; 0x3ce <_ZN5Pages12chooseActionEjj+0x46>
+ 394:	9a 01       	movw	r18, r20
+ 396:	26 50       	subi	r18, 0x06	; 6
+ 398:	31 09       	sbc	r19, r1
+ 39a:	20 3b       	cpi	r18, 0xB0	; 176
+ 39c:	33 40       	sbci	r19, 0x03	; 3
+ 39e:	b8 f4       	brcc	.+46     	; 0x3ce <_ZN5Pages12chooseActionEjj+0x46>
+ 3a0:	0f c0       	rjmp	.+30     	; 0x3c0 <_ZN5Pages12chooseActionEjj+0x38>
 void Pages::chooseAction(uint16_t posx,uint16_t posy)
 {
 	if(this->range(posx,950,5) && range(posy,950,5))
 	{
 		if(pageNo == 1)
 			this->page1Action(posx,posy);
- 3f0:	0e 94 ce 01 	call	0x39c	; 0x39c <_ZN5Pages11page1ActionEjj>
- 3f4:	08 95       	ret
+ 3a2:	0e 94 a7 01 	call	0x34e	; 0x34e <_ZN5Pages11page1ActionEjj>
+ 3a6:	08 95       	ret
 		else if(pageNo == 2)
- 3f6:	22 30       	cpi	r18, 0x02	; 2
- 3f8:	31 05       	cpc	r19, r1
- 3fa:	19 f4       	brne	.+6      	; 0x402 <_ZN5Pages12chooseActionEjj+0x2c>
+ 3a8:	22 30       	cpi	r18, 0x02	; 2
+ 3aa:	31 05       	cpc	r19, r1
+ 3ac:	19 f4       	brne	.+6      	; 0x3b4 <_ZN5Pages12chooseActionEjj+0x2c>
 			this->page2Action(posx,posy);
- 3fc:	0e 94 1f 01 	call	0x23e	; 0x23e <_ZN5Pages11page2ActionEjj>
- 400:	08 95       	ret
+ 3ae:	0e 94 f8 00 	call	0x1f0	; 0x1f0 <_ZN5Pages11page2ActionEjj>
+ 3b2:	08 95       	ret
 		else if(pageNo == 3)
- 402:	23 30       	cpi	r18, 0x03	; 3
- 404:	31 05       	cpc	r19, r1
- 406:	51 f4       	brne	.+20     	; 0x41c <_ZN5Pages12chooseActionEjj+0x46>
+ 3b4:	23 30       	cpi	r18, 0x03	; 3
+ 3b6:	31 05       	cpc	r19, r1
+ 3b8:	51 f4       	brne	.+20     	; 0x3ce <_ZN5Pages12chooseActionEjj+0x46>
 			this->page3Action(posx,posy);
- 408:	0e 94 44 01 	call	0x288	; 0x288 <_ZN5Pages11page3ActionEjj>
- 40c:	08 95       	ret
+ 3ba:	0e 94 1d 01 	call	0x23a	; 0x23a <_ZN5Pages11page3ActionEjj>
+ 3be:	08 95       	ret
 
 void Pages::chooseAction(uint16_t posx,uint16_t posy)
 {
 	if(this->range(posx,950,5) && range(posy,950,5))
 	{
 		if(pageNo == 1)
- 40e:	fc 01       	movw	r30, r24
- 410:	20 81       	ld	r18, Z
- 412:	31 81       	ldd	r19, Z+1	; 0x01
- 414:	21 30       	cpi	r18, 0x01	; 1
- 416:	31 05       	cpc	r19, r1
- 418:	71 f7       	brne	.-36     	; 0x3f6 <_ZN5Pages12chooseActionEjj+0x20>
- 41a:	ea cf       	rjmp	.-44     	; 0x3f0 <_ZN5Pages12chooseActionEjj+0x1a>
- 41c:	08 95       	ret
+ 3c0:	fc 01       	movw	r30, r24
+ 3c2:	20 81       	ld	r18, Z
+ 3c4:	31 81       	ldd	r19, Z+1	; 0x01
+ 3c6:	21 30       	cpi	r18, 0x01	; 1
+ 3c8:	31 05       	cpc	r19, r1
+ 3ca:	71 f7       	brne	.-36     	; 0x3a8 <_ZN5Pages12chooseActionEjj+0x20>
+ 3cc:	ea cf       	rjmp	.-44     	; 0x3a2 <_ZN5Pages12chooseActionEjj+0x1a>
+ 3ce:	08 95       	ret
 
-0000041e <main>:
+000003d0 <main>:
 	//	OCR0A = number;
 	
 }*/
 
 int main(void)
 {
- 41e:	cf 93       	push	r28
- 420:	df 93       	push	r29
- 422:	00 d0       	rcall	.+0      	; 0x424 <main+0x6>
- 424:	00 d0       	rcall	.+0      	; 0x426 <main+0x8>
- 426:	cd b7       	in	r28, 0x3d	; 61
- 428:	de b7       	in	r29, 0x3e	; 62
+ 3d0:	cf 93       	push	r28
+ 3d2:	df 93       	push	r29
+ 3d4:	00 d0       	rcall	.+0      	; 0x3d6 <main+0x6>
+ 3d6:	00 d0       	rcall	.+0      	; 0x3d8 <main+0x8>
+ 3d8:	cd b7       	in	r28, 0x3d	; 61
+ 3da:	de b7       	in	r29, 0x3e	; 62
 	sei();
- 42a:	78 94       	sei
+ 3dc:	78 94       	sei
 	//count = 0;
 	LcdDisplay lcd;
 	
 	touchscreen.init();
- 42c:	8c e4       	ldi	r24, 0x4C	; 76
- 42e:	91 e0       	ldi	r25, 0x01	; 1
- 430:	0e 94 8d 02 	call	0x51a	; 0x51a <_ZN11TouchScreen4initEv>
+ 3de:	8c e4       	ldi	r24, 0x4C	; 76
+ 3e0:	91 e0       	ldi	r25, 0x01	; 1
+ 3e2:	0e 94 66 02 	call	0x4cc	; 0x4cc <_ZN11TouchScreen4initEv>
 	lcd.init_lcd();
- 434:	ce 01       	movw	r24, r28
- 436:	04 96       	adiw	r24, 0x04	; 4
- 438:	0e 94 53 00 	call	0xa6	; 0xa6 <_ZN10LcdDisplay8init_lcdEv>
+ 3e6:	ce 01       	movw	r24, r28
+ 3e8:	04 96       	adiw	r24, 0x04	; 4
+ 3ea:	0e 94 79 02 	call	0x4f2	; 0x4f2 <_ZN10LcdDisplay8init_lcdEv>
 	USART_Init(MYUBRR);
- 43c:	87 e6       	ldi	r24, 0x67	; 103
- 43e:	90 e0       	ldi	r25, 0x00	; 0
- 440:	0e 94 a0 02 	call	0x540	; 0x540 <_Z10USART_Initj>
+ 3ee:	87 e6       	ldi	r24, 0x67	; 103
+ 3f0:	90 e0       	ldi	r25, 0x00	; 0
+ 3f2:	0e 94 a0 02 	call	0x540	; 0x540 <_Z10USART_Initj>
 	timer0_interrupt_init();
- 444:	0e 94 85 00 	call	0x10a	; 0x10a <_Z21timer0_interrupt_initv>
+ 3f6:	0e 94 5e 00 	call	0xbc	; 0xbc <_Z21timer0_interrupt_initv>
 	lcd.clearDisplay();
- 448:	ce 01       	movw	r24, r28
- 44a:	04 96       	adiw	r24, 0x04	; 4
- 44c:	0e 94 58 00 	call	0xb0	; 0xb0 <_ZN10LcdDisplay12clearDisplayEv>
+ 3fa:	ce 01       	movw	r24, r28
+ 3fc:	04 96       	adiw	r24, 0x04	; 4
+ 3fe:	0e 94 7e 02 	call	0x4fc	; 0x4fc <_ZN10LcdDisplay12clearDisplayEv>
 	Pages page;
- 450:	ce 01       	movw	r24, r28
- 452:	01 96       	adiw	r24, 0x01	; 1
- 454:	0e 94 c4 00 	call	0x188	; 0x188 <_ZN5PagesC1Ev>
+ 402:	ce 01       	movw	r24, r28
+ 404:	01 96       	adiw	r24, 0x01	; 1
+ 406:	0e 94 9d 00 	call	0x13a	; 0x13a <_ZN5PagesC1Ev>
 	page.introPage();
- 458:	ce 01       	movw	r24, r28
- 45a:	01 96       	adiw	r24, 0x01	; 1
- 45c:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_ZN5Pages9introPageEv>
- 460:	2f ef       	ldi	r18, 0xFF	; 255
- 462:	83 ec       	ldi	r24, 0xC3	; 195
- 464:	99 e0       	ldi	r25, 0x09	; 9
- 466:	21 50       	subi	r18, 0x01	; 1
- 468:	80 40       	sbci	r24, 0x00	; 0
- 46a:	90 40       	sbci	r25, 0x00	; 0
- 46c:	e1 f7       	brne	.-8      	; 0x466 <main+0x48>
- 46e:	00 c0       	rjmp	.+0      	; 0x470 <main+0x52>
- 470:	00 00       	nop
+ 40a:	ce 01       	movw	r24, r28
+ 40c:	01 96       	adiw	r24, 0x01	; 1
+ 40e:	0e 94 c7 00 	call	0x18e	; 0x18e <_ZN5Pages9introPageEv>
+ 412:	2f ef       	ldi	r18, 0xFF	; 255
+ 414:	83 ec       	ldi	r24, 0xC3	; 195
+ 416:	99 e0       	ldi	r25, 0x09	; 9
+ 418:	21 50       	subi	r18, 0x01	; 1
+ 41a:	80 40       	sbci	r24, 0x00	; 0
+ 41c:	90 40       	sbci	r25, 0x00	; 0
+ 41e:	e1 f7       	brne	.-8      	; 0x418 <main+0x48>
+ 420:	00 c0       	rjmp	.+0      	; 0x422 <main+0x52>
+ 422:	00 00       	nop
 	 while (1)
 	 {
 		 _delay_ms(200);
 		page.chooseAction(touchscreen.getPosX(),touchscreen.getPosY());
- 472:	8c e4       	ldi	r24, 0x4C	; 76
- 474:	91 e0       	ldi	r25, 0x01	; 1
- 476:	0e 94 94 02 	call	0x528	; 0x528 <_ZN11TouchScreen7getPosYEv>
- 47a:	8c 01       	movw	r16, r24
- 47c:	8c e4       	ldi	r24, 0x4C	; 76
- 47e:	91 e0       	ldi	r25, 0x01	; 1
- 480:	0e 94 90 02 	call	0x520	; 0x520 <_ZN11TouchScreen7getPosXEv>
- 484:	a8 01       	movw	r20, r16
- 486:	bc 01       	movw	r22, r24
- 488:	ce 01       	movw	r24, r28
- 48a:	01 96       	adiw	r24, 0x01	; 1
- 48c:	0e 94 eb 01 	call	0x3d6	; 0x3d6 <_ZN5Pages12chooseActionEjj>
- 490:	e7 cf       	rjmp	.-50     	; 0x460 <main+0x42>
+ 424:	8c e4       	ldi	r24, 0x4C	; 76
+ 426:	91 e0       	ldi	r25, 0x01	; 1
+ 428:	0e 94 6d 02 	call	0x4da	; 0x4da <_ZN11TouchScreen7getPosYEv>
+ 42c:	8c 01       	movw	r16, r24
+ 42e:	8c e4       	ldi	r24, 0x4C	; 76
+ 430:	91 e0       	ldi	r25, 0x01	; 1
+ 432:	0e 94 69 02 	call	0x4d2	; 0x4d2 <_ZN11TouchScreen7getPosXEv>
+ 436:	a8 01       	movw	r20, r16
+ 438:	bc 01       	movw	r22, r24
+ 43a:	ce 01       	movw	r24, r28
+ 43c:	01 96       	adiw	r24, 0x01	; 1
+ 43e:	0e 94 c4 01 	call	0x388	; 0x388 <_ZN5Pages12chooseActionEjj>
+ 442:	e7 cf       	rjmp	.-50     	; 0x412 <main+0x42>
 
-00000492 <__vector_14>:
+00000444 <__vector_14>:
 
 
 }*/
 
 ISR(TIMER0_COMPA_vect)
 {
- 492:	1f 92       	push	r1
- 494:	0f 92       	push	r0
- 496:	0f b6       	in	r0, 0x3f	; 63
- 498:	0f 92       	push	r0
- 49a:	11 24       	eor	r1, r1
- 49c:	2f 93       	push	r18
- 49e:	3f 93       	push	r19
- 4a0:	4f 93       	push	r20
- 4a2:	5f 93       	push	r21
- 4a4:	6f 93       	push	r22
- 4a6:	7f 93       	push	r23
- 4a8:	8f 93       	push	r24
- 4aa:	9f 93       	push	r25
- 4ac:	af 93       	push	r26
- 4ae:	bf 93       	push	r27
- 4b0:	ef 93       	push	r30
- 4b2:	ff 93       	push	r31
+ 444:	1f 92       	push	r1
+ 446:	0f 92       	push	r0
+ 448:	0f b6       	in	r0, 0x3f	; 63
+ 44a:	0f 92       	push	r0
+ 44c:	11 24       	eor	r1, r1
+ 44e:	2f 93       	push	r18
+ 450:	3f 93       	push	r19
+ 452:	4f 93       	push	r20
+ 454:	5f 93       	push	r21
+ 456:	6f 93       	push	r22
+ 458:	7f 93       	push	r23
+ 45a:	8f 93       	push	r24
+ 45c:	9f 93       	push	r25
+ 45e:	af 93       	push	r26
+ 460:	bf 93       	push	r27
+ 462:	ef 93       	push	r30
+ 464:	ff 93       	push	r31
 
 static uint16_t count = 0;
 	if(count == 500)
- 4b4:	80 91 4a 01 	lds	r24, 0x014A
- 4b8:	90 91 4b 01 	lds	r25, 0x014B
- 4bc:	84 3f       	cpi	r24, 0xF4	; 244
- 4be:	91 40       	sbci	r25, 0x01	; 1
- 4c0:	91 f4       	brne	.+36     	; 0x4e6 <__vector_14+0x54>
+ 466:	80 91 4a 01 	lds	r24, 0x014A
+ 46a:	90 91 4b 01 	lds	r25, 0x014B
+ 46e:	84 3f       	cpi	r24, 0xF4	; 244
+ 470:	91 40       	sbci	r25, 0x01	; 1
+ 472:	91 f4       	brne	.+36     	; 0x498 <__vector_14+0x54>
 	{
 	touchscreen.setPosX(readX());
- 4c2:	0e 94 a0 00 	call	0x140	; 0x140 <_Z5readXv>
- 4c6:	bc 01       	movw	r22, r24
- 4c8:	8c e4       	ldi	r24, 0x4C	; 76
- 4ca:	91 e0       	ldi	r25, 0x01	; 1
- 4cc:	0e 94 98 02 	call	0x530	; 0x530 <_ZN11TouchScreen7setPosXEj>
+ 474:	0e 94 79 00 	call	0xf2	; 0xf2 <_Z5readXv>
+ 478:	bc 01       	movw	r22, r24
+ 47a:	8c e4       	ldi	r24, 0x4C	; 76
+ 47c:	91 e0       	ldi	r25, 0x01	; 1
+ 47e:	0e 94 71 02 	call	0x4e2	; 0x4e2 <_ZN11TouchScreen7setPosXEj>
 	touchscreen.setPosY(readY());	
- 4d0:	0e 94 b2 00 	call	0x164	; 0x164 <_Z5readYv>
- 4d4:	bc 01       	movw	r22, r24
- 4d6:	8c e4       	ldi	r24, 0x4C	; 76
- 4d8:	91 e0       	ldi	r25, 0x01	; 1
- 4da:	0e 94 9c 02 	call	0x538	; 0x538 <_ZN11TouchScreen7setPosYEj>
+ 482:	0e 94 8b 00 	call	0x116	; 0x116 <_Z5readYv>
+ 486:	bc 01       	movw	r22, r24
+ 488:	8c e4       	ldi	r24, 0x4C	; 76
+ 48a:	91 e0       	ldi	r25, 0x01	; 1
+ 48c:	0e 94 75 02 	call	0x4ea	; 0x4ea <_ZN11TouchScreen7setPosYEj>
 	count=0;
- 4de:	10 92 4b 01 	sts	0x014B, r1
- 4e2:	10 92 4a 01 	sts	0x014A, r1
+ 490:	10 92 4b 01 	sts	0x014B, r1
+ 494:	10 92 4a 01 	sts	0x014A, r1
 
 	}
 	count++;
- 4e6:	80 91 4a 01 	lds	r24, 0x014A
- 4ea:	90 91 4b 01 	lds	r25, 0x014B
- 4ee:	01 96       	adiw	r24, 0x01	; 1
- 4f0:	90 93 4b 01 	sts	0x014B, r25
- 4f4:	80 93 4a 01 	sts	0x014A, r24
+ 498:	80 91 4a 01 	lds	r24, 0x014A
+ 49c:	90 91 4b 01 	lds	r25, 0x014B
+ 4a0:	01 96       	adiw	r24, 0x01	; 1
+ 4a2:	90 93 4b 01 	sts	0x014B, r25
+ 4a6:	80 93 4a 01 	sts	0x014A, r24
 }
- 4f8:	ff 91       	pop	r31
- 4fa:	ef 91       	pop	r30
- 4fc:	bf 91       	pop	r27
- 4fe:	af 91       	pop	r26
- 500:	9f 91       	pop	r25
- 502:	8f 91       	pop	r24
- 504:	7f 91       	pop	r23
- 506:	6f 91       	pop	r22
- 508:	5f 91       	pop	r21
- 50a:	4f 91       	pop	r20
- 50c:	3f 91       	pop	r19
- 50e:	2f 91       	pop	r18
- 510:	0f 90       	pop	r0
- 512:	0f be       	out	0x3f, r0	; 63
- 514:	0f 90       	pop	r0
- 516:	1f 90       	pop	r1
- 518:	18 95       	reti
+ 4aa:	ff 91       	pop	r31
+ 4ac:	ef 91       	pop	r30
+ 4ae:	bf 91       	pop	r27
+ 4b0:	af 91       	pop	r26
+ 4b2:	9f 91       	pop	r25
+ 4b4:	8f 91       	pop	r24
+ 4b6:	7f 91       	pop	r23
+ 4b8:	6f 91       	pop	r22
+ 4ba:	5f 91       	pop	r21
+ 4bc:	4f 91       	pop	r20
+ 4be:	3f 91       	pop	r19
+ 4c0:	2f 91       	pop	r18
+ 4c2:	0f 90       	pop	r0
+ 4c4:	0f be       	out	0x3f, r0	; 63
+ 4c6:	0f 90       	pop	r0
+ 4c8:	1f 90       	pop	r1
+ 4ca:	18 95       	reti
 
-0000051a <_ZN11TouchScreen4initEv>:
-	ADCSRA |= (1<<ADPS0) | (1<<ADPS1) | (1<<ADPS2) | (1<<ADEN);	
+000004cc <_ZN11TouchScreen4initEv>:
 }*/
+//---------------------------Touch Screen-----------------
 
 void TouchScreen::init()
 {
 	adc_init();
- 51a:	0e 94 7a 00 	call	0xf4	; 0xf4 <_Z8adc_initv>
- 51e:	08 95       	ret
+ 4cc:	0e 94 53 00 	call	0xa6	; 0xa6 <_Z8adc_initv>
+ 4d0:	08 95       	ret
 
-00000520 <_ZN11TouchScreen7getPosXEv>:
+000004d2 <_ZN11TouchScreen7getPosXEv>:
 }
 
 uint16_t TouchScreen::getPosX()
 {
 	return this->posX;
 }
- 520:	fc 01       	movw	r30, r24
- 522:	80 81       	ld	r24, Z
- 524:	91 81       	ldd	r25, Z+1	; 0x01
- 526:	08 95       	ret
+ 4d2:	fc 01       	movw	r30, r24
+ 4d4:	80 81       	ld	r24, Z
+ 4d6:	91 81       	ldd	r25, Z+1	; 0x01
+ 4d8:	08 95       	ret
 
-00000528 <_ZN11TouchScreen7getPosYEv>:
+000004da <_ZN11TouchScreen7getPosYEv>:
 
 uint16_t TouchScreen::getPosY()
 {
 	return this->posY;
 }
- 528:	fc 01       	movw	r30, r24
- 52a:	82 81       	ldd	r24, Z+2	; 0x02
- 52c:	93 81       	ldd	r25, Z+3	; 0x03
- 52e:	08 95       	ret
+ 4da:	fc 01       	movw	r30, r24
+ 4dc:	82 81       	ldd	r24, Z+2	; 0x02
+ 4de:	93 81       	ldd	r25, Z+3	; 0x03
+ 4e0:	08 95       	ret
 
-00000530 <_ZN11TouchScreen7setPosXEj>:
+000004e2 <_ZN11TouchScreen7setPosXEj>:
 
 void TouchScreen::setPosX(uint16_t x)
 {
 	this->posX = x;
- 530:	fc 01       	movw	r30, r24
- 532:	71 83       	std	Z+1, r23	; 0x01
- 534:	60 83       	st	Z, r22
- 536:	08 95       	ret
+ 4e2:	fc 01       	movw	r30, r24
+ 4e4:	71 83       	std	Z+1, r23	; 0x01
+ 4e6:	60 83       	st	Z, r22
+ 4e8:	08 95       	ret
 
-00000538 <_ZN11TouchScreen7setPosYEj>:
+000004ea <_ZN11TouchScreen7setPosYEj>:
 }
 
 void TouchScreen::setPosY(uint16_t y)
 {
 	this->posY = y;
- 538:	fc 01       	movw	r30, r24
- 53a:	73 83       	std	Z+3, r23	; 0x03
- 53c:	62 83       	std	Z+2, r22	; 0x02
+ 4ea:	fc 01       	movw	r30, r24
+ 4ec:	73 83       	std	Z+3, r23	; 0x03
+ 4ee:	62 83       	std	Z+2, r22	; 0x02
+ 4f0:	08 95       	ret
+
+000004f2 <_ZN10LcdDisplay8init_lcdEv>:
+
+//---------------------------LCD Screen------------------
+
+void LcdDisplay::init_lcd()
+{
+	USART_Init(MYUBRR);
+ 4f2:	87 e6       	ldi	r24, 0x67	; 103
+ 4f4:	90 e0       	ldi	r25, 0x00	; 0
+ 4f6:	0e 94 a0 02 	call	0x540	; 0x540 <_Z10USART_Initj>
+ 4fa:	08 95       	ret
+
+000004fc <_ZN10LcdDisplay12clearDisplayEv>:
+}
+
+void LcdDisplay::clearDisplay()
+{
+	USART_Sendbyte(0xFE);
+ 4fc:	8e ef       	ldi	r24, 0xFE	; 254
+ 4fe:	0e 94 ab 02 	call	0x556	; 0x556 <_Z14USART_Sendbyteh>
+	USART_Sendbyte(0x01);
+ 502:	81 e0       	ldi	r24, 0x01	; 1
+ 504:	0e 94 ab 02 	call	0x556	; 0x556 <_Z14USART_Sendbyteh>
+ 508:	08 95       	ret
+
+0000050a <_ZN10LcdDisplay13displayStringEPKc>:
+}
+
+void LcdDisplay::displayString(const char *str)
+{
+ 50a:	cb 01       	movw	r24, r22
+	USART_Send_string(str);
+ 50c:	0e 94 b3 02 	call	0x566	; 0x566 <_Z17USART_Send_stringPKc>
+ 510:	08 95       	ret
+
+00000512 <_ZN10LcdDisplay6gotoXYEhj>:
+		USART_Sendbyte(0x1C);
+	}
+}
+
+void LcdDisplay::gotoXY(unsigned char row, unsigned int col)
+{
+ 512:	cf 93       	push	r28
+ 514:	df 93       	push	r29
+ 516:	c6 2f       	mov	r28, r22
+ 518:	d4 2f       	mov	r29, r20
+	USART_Sendbyte(0xFE);
+ 51a:	8e ef       	ldi	r24, 0xFE	; 254
+ 51c:	0e 94 ab 02 	call	0x556	; 0x556 <_Z14USART_Sendbyteh>
+	if(row==1)
+ 520:	c1 30       	cpi	r28, 0x01	; 1
+ 522:	29 f4       	brne	.+10     	; 0x52e <_ZN10LcdDisplay6gotoXYEhj+0x1c>
+	{
+		USART_Sendbyte(0+(col-1)+128);
+ 524:	8f e7       	ldi	r24, 0x7F	; 127
+ 526:	8d 0f       	add	r24, r29
+ 528:	0e 94 ab 02 	call	0x556	; 0x556 <_Z14USART_Sendbyteh>
+ 52c:	06 c0       	rjmp	.+12     	; 0x53a <_ZN10LcdDisplay6gotoXYEhj+0x28>
+	}else if(row==2)
+ 52e:	c2 30       	cpi	r28, 0x02	; 2
+ 530:	21 f4       	brne	.+8      	; 0x53a <_ZN10LcdDisplay6gotoXYEhj+0x28>
+	{
+		USART_Sendbyte(64+(col-1)+128);
+ 532:	8f eb       	ldi	r24, 0xBF	; 191
+ 534:	8d 0f       	add	r24, r29
+ 536:	0e 94 ab 02 	call	0x556	; 0x556 <_Z14USART_Sendbyteh>
+	}
+}
+ 53a:	df 91       	pop	r29
+ 53c:	cf 91       	pop	r28
  53e:	08 95       	ret
 
 00000540 <_Z10USART_Initj>:

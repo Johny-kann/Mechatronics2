@@ -37,13 +37,10 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../lcdCom.cpp \
 ../operations.cpp \
 ../pages.cpp \
 ../Proj2.cpp \
-../servo.cpp \
-../stepper_motor.cpp \
-../touch_screen.cpp \
+../models.cpp \
 ../uart.cpp
 
 
@@ -54,43 +51,31 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-lcdCom.o \
 operations.o \
 pages.o \
 Proj2.o \
-servo.o \
-stepper_motor.o \
-touch_screen.o \
+models.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
-lcdCom.o \
 operations.o \
 pages.o \
 Proj2.o \
-servo.o \
-stepper_motor.o \
-touch_screen.o \
+models.o \
 uart.o
 
 C_DEPS +=  \
-lcdCom.d \
 operations.d \
 pages.d \
 Proj2.d \
-servo.d \
-stepper_motor.d \
-touch_screen.d \
+models.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
-lcdCom.d \
 operations.d \
 pages.d \
 Proj2.d \
-servo.d \
-stepper_motor.d \
-touch_screen.d \
+models.d \
 uart.d
 
 OUTPUT_FILE_PATH +=Proj2.elf
@@ -107,12 +92,6 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-
-
-
-
-
-
 
 
 

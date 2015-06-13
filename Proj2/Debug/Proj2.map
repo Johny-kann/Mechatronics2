@@ -7,7 +7,7 @@ c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-t
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_clear_bss.o)
                               Proj2.o (__do_clear_bss)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_umulhisi3.o)
-                              servo.o (__umulhisi3)
+                              models.o (__umulhisi3)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
                               uart.o (sprintf)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
@@ -29,21 +29,6 @@ Discarded input sections
 
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm328p.o
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm328p.o
- .text          0x00000000        0x0 lcdCom.o
- .data          0x00000000        0x0 lcdCom.o
- .bss           0x00000000        0x0 lcdCom.o
- .text._ZN10LcdDisplay10displayIntEi
-                0x00000000        0x8 lcdCom.o
- .text._ZN10LcdDisplay11blinkCursorEv
-                0x00000000        0xe lcdCom.o
- .text._ZN10LcdDisplay13moveLeftTimesEj
-                0x00000000       0x24 lcdCom.o
- .text._ZN10LcdDisplay14moveRightTimesEj
-                0x00000000       0x24 lcdCom.o
- .text._ZN10LcdDisplay15cursorLeftTimesEj
-                0x00000000       0x24 lcdCom.o
- .text._ZN10LcdDisplay16cursorRightTimesEj
-                0x00000000       0x24 lcdCom.o
  .text          0x00000000        0x0 operations.o
  .data          0x00000000        0x0 operations.o
  .bss           0x00000000        0x0 operations.o
@@ -57,49 +42,35 @@ Discarded input sections
  .text          0x00000000        0x0 Proj2.o
  .data          0x00000000        0x0 Proj2.o
  .bss           0x00000000        0x0 Proj2.o
- .text          0x00000000        0x0 servo.o
- .data          0x00000000        0x0 servo.o
- .bss           0x00000000        0x0 servo.o
+ .text          0x00000000        0x0 models.o
+ .data          0x00000000        0x0 models.o
+ .bss           0x00000000        0x0 models.o
  .text._ZN5Servo9setDegreeEj
-                0x00000000       0x38 servo.o
+                0x00000000       0x38 models.o
  .text._ZN5Servo9getDegreeEv
-                0x00000000        0x8 servo.o
+                0x00000000        0x8 models.o
  .text._ZN5Servo9stopTimerEv
-                0x00000000       0x16 servo.o
+                0x00000000       0x16 models.o
  .text._ZN5Servo15initAttachTimerEv
-                0x00000000       0x36 servo.o
- .debug_info    0x00000000      0x1fc servo.o
- .debug_abbrev  0x00000000      0x157 servo.o
- .debug_loc     0x00000000       0xf8 servo.o
- .debug_aranges
-                0x00000000       0x38 servo.o
- .debug_ranges  0x00000000       0x28 servo.o
- .debug_line    0x00000000       0xf1 servo.o
- .debug_str     0x00000000      0x215 servo.o
- .comment       0x00000000       0x31 servo.o
- .debug_frame   0x00000000       0x54 servo.o
- .text          0x00000000        0x0 stepper_motor.o
- .data          0x00000000        0x0 stepper_motor.o
- .bss           0x00000000        0x0 stepper_motor.o
+                0x00000000       0x36 models.o
  .text._ZN12StepperMotor11moveForwardEii
-                0x00000000       0x46 stepper_motor.o
+                0x00000000       0x46 models.o
  .text._ZN12StepperMotor12moveBackwardEii
-                0x00000000       0x44 stepper_motor.o
+                0x00000000       0x44 models.o
  .text._ZN12StepperMotorC2Ev
-                0x00000000       0x18 stepper_motor.o
- .debug_info    0x00000000      0x34f stepper_motor.o
- .debug_abbrev  0x00000000      0x1bc stepper_motor.o
- .debug_loc     0x00000000      0x206 stepper_motor.o
- .debug_aranges
-                0x00000000       0x30 stepper_motor.o
- .debug_ranges  0x00000000       0x20 stepper_motor.o
- .debug_line    0x00000000      0x198 stepper_motor.o
- .debug_str     0x00000000      0x26f stepper_motor.o
- .comment       0x00000000       0x31 stepper_motor.o
- .debug_frame   0x00000000       0x44 stepper_motor.o
- .text          0x00000000        0x0 touch_screen.o
- .data          0x00000000        0x0 touch_screen.o
- .bss           0x00000000        0x0 touch_screen.o
+                0x00000000       0x18 models.o
+ .text._ZN10LcdDisplay10displayIntEi
+                0x00000000        0x8 models.o
+ .text._ZN10LcdDisplay11blinkCursorEv
+                0x00000000        0xe models.o
+ .text._ZN10LcdDisplay13moveLeftTimesEj
+                0x00000000       0x24 models.o
+ .text._ZN10LcdDisplay14moveRightTimesEj
+                0x00000000       0x24 models.o
+ .text._ZN10LcdDisplay15cursorLeftTimesEj
+                0x00000000       0x24 models.o
+ .text._ZN10LcdDisplay16cursorRightTimesEj
+                0x00000000       0x24 models.o
  .text          0x00000000        0x0 uart.o
  .data          0x00000000        0x0 uart.o
  .bss           0x00000000        0x0 uart.o
@@ -253,13 +224,10 @@ Linker script and memory map
 
 Address of section .data set to 0x800100
 LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm328p.o
-LOAD lcdCom.o
 LOAD operations.o
 LOAD pages.o
 LOAD Proj2.o
-LOAD servo.o
-LOAD stepper_motor.o
-LOAD touch_screen.o
+LOAD models.o
 LOAD uart.o
 START GROUP
 LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a
@@ -446,81 +414,81 @@ END GROUP
                 0x000000a2                __vector_20
                 0x000000a6                . = ALIGN (0x2)
  *(.text.*)
- .text._ZN10LcdDisplay8init_lcdEv
-                0x000000a6        0xa lcdCom.o
-                0x000000a6                _ZN10LcdDisplay8init_lcdEv
- .text._ZN10LcdDisplay12clearDisplayEv
-                0x000000b0        0xe lcdCom.o
-                0x000000b0                _ZN10LcdDisplay12clearDisplayEv
- .text._ZN10LcdDisplay13displayStringEPKc
-                0x000000be        0x8 lcdCom.o
-                0x000000be                _ZN10LcdDisplay13displayStringEPKc
- .text._ZN10LcdDisplay6gotoXYEhj
-                0x000000c6       0x2e lcdCom.o
-                0x000000c6                _ZN10LcdDisplay6gotoXYEhj
  .text._Z8adc_initv
-                0x000000f4       0x16 operations.o
-                0x000000f4                _Z8adc_initv
+                0x000000a6       0x16 operations.o
+                0x000000a6                _Z8adc_initv
  .text._Z21timer0_interrupt_initv
-                0x0000010a        0xe operations.o
-                0x0000010a                _Z21timer0_interrupt_initv
+                0x000000bc        0xe operations.o
+                0x000000bc                _Z21timer0_interrupt_initv
  .text._Z8adc_readh
-                0x00000118       0x28 operations.o
-                0x00000118                _Z8adc_readh
+                0x000000ca       0x28 operations.o
+                0x000000ca                _Z8adc_readh
  .text._Z5readXv
-                0x00000140       0x24 operations.o
-                0x00000140                _Z5readXv
+                0x000000f2       0x24 operations.o
+                0x000000f2                _Z5readXv
  .text._Z5readYv
-                0x00000164       0x24 operations.o
-                0x00000164                _Z5readYv
+                0x00000116       0x24 operations.o
+                0x00000116                _Z5readYv
  .text._ZN5PagesC2Ev
-                0x00000188       0x1a pages.o
-                0x00000188                _ZN5PagesC1Ev
-                0x00000188                _ZN5PagesC2Ev
+                0x0000013a       0x1a pages.o
+                0x0000013a                _ZN5PagesC1Ev
+                0x0000013a                _ZN5PagesC2Ev
  .text._ZN5Pages9dispPage1Ev
-                0x000001a2       0x3a pages.o
-                0x000001a2                _ZN5Pages9dispPage1Ev
+                0x00000154       0x3a pages.o
+                0x00000154                _ZN5Pages9dispPage1Ev
  .text._ZN5Pages9introPageEv
-                0x000001dc       0x62 pages.o
-                0x000001dc                _ZN5Pages9introPageEv
+                0x0000018e       0x62 pages.o
+                0x0000018e                _ZN5Pages9introPageEv
  .text._ZN5Pages11page2ActionEjj
-                0x0000023e       0x4a pages.o
-                0x0000023e                _ZN5Pages11page2ActionEjj
+                0x000001f0       0x4a pages.o
+                0x000001f0                _ZN5Pages11page2ActionEjj
  .text._ZN5Pages11page3ActionEjj
-                0x00000288       0x32 pages.o
-                0x00000288                _ZN5Pages11page3ActionEjj
+                0x0000023a       0x32 pages.o
+                0x0000023a                _ZN5Pages11page3ActionEjj
  .text._ZN5Pages9dispPage2Ev
-                0x000002ba       0x7c pages.o
-                0x000002ba                _ZN5Pages9dispPage2Ev
+                0x0000026c       0x7c pages.o
+                0x0000026c                _ZN5Pages9dispPage2Ev
  .text._ZN5Pages9dispPage3Ev
-                0x00000336       0x66 pages.o
-                0x00000336                _ZN5Pages9dispPage3Ev
+                0x000002e8       0x66 pages.o
+                0x000002e8                _ZN5Pages9dispPage3Ev
  .text._ZN5Pages11page1ActionEjj
-                0x0000039c       0x3a pages.o
-                0x0000039c                _ZN5Pages11page1ActionEjj
+                0x0000034e       0x3a pages.o
+                0x0000034e                _ZN5Pages11page1ActionEjj
  .text._ZN5Pages12chooseActionEjj
-                0x000003d6       0x48 pages.o
-                0x000003d6                _ZN5Pages12chooseActionEjj
- .text.main     0x0000041e       0x74 Proj2.o
-                0x0000041e                main
+                0x00000388       0x48 pages.o
+                0x00000388                _ZN5Pages12chooseActionEjj
+ .text.main     0x000003d0       0x74 Proj2.o
+                0x000003d0                main
  .text.__vector_14
-                0x00000492       0x88 Proj2.o
-                0x00000492                __vector_14
+                0x00000444       0x88 Proj2.o
+                0x00000444                __vector_14
  .text._ZN11TouchScreen4initEv
-                0x0000051a        0x6 touch_screen.o
-                0x0000051a                _ZN11TouchScreen4initEv
+                0x000004cc        0x6 models.o
+                0x000004cc                _ZN11TouchScreen4initEv
  .text._ZN11TouchScreen7getPosXEv
-                0x00000520        0x8 touch_screen.o
-                0x00000520                _ZN11TouchScreen7getPosXEv
+                0x000004d2        0x8 models.o
+                0x000004d2                _ZN11TouchScreen7getPosXEv
  .text._ZN11TouchScreen7getPosYEv
-                0x00000528        0x8 touch_screen.o
-                0x00000528                _ZN11TouchScreen7getPosYEv
+                0x000004da        0x8 models.o
+                0x000004da                _ZN11TouchScreen7getPosYEv
  .text._ZN11TouchScreen7setPosXEj
-                0x00000530        0x8 touch_screen.o
-                0x00000530                _ZN11TouchScreen7setPosXEj
+                0x000004e2        0x8 models.o
+                0x000004e2                _ZN11TouchScreen7setPosXEj
  .text._ZN11TouchScreen7setPosYEj
-                0x00000538        0x8 touch_screen.o
-                0x00000538                _ZN11TouchScreen7setPosYEj
+                0x000004ea        0x8 models.o
+                0x000004ea                _ZN11TouchScreen7setPosYEj
+ .text._ZN10LcdDisplay8init_lcdEv
+                0x000004f2        0xa models.o
+                0x000004f2                _ZN10LcdDisplay8init_lcdEv
+ .text._ZN10LcdDisplay12clearDisplayEv
+                0x000004fc        0xe models.o
+                0x000004fc                _ZN10LcdDisplay12clearDisplayEv
+ .text._ZN10LcdDisplay13displayStringEPKc
+                0x0000050a        0x8 models.o
+                0x0000050a                _ZN10LcdDisplay13displayStringEPKc
+ .text._ZN10LcdDisplay6gotoXYEhj
+                0x00000512       0x2e models.o
+                0x00000512                _ZN10LcdDisplay6gotoXYEhj
  .text._Z10USART_Initj
                 0x00000540       0x16 uart.o
                 0x00000540                _Z10USART_Initj
@@ -631,12 +599,11 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 lcdCom.o
+ .comment       0x00000000       0x30 operations.o
                                  0x31 (size before relaxing)
- .comment       0x00000000       0x31 operations.o
  .comment       0x00000000       0x31 pages.o
  .comment       0x00000000       0x31 Proj2.o
- .comment       0x00000000       0x31 touch_screen.o
+ .comment       0x00000000       0x31 models.o
  .comment       0x00000000       0x31 uart.o
 
 .note.gnu.build-id
@@ -654,83 +621,74 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x1b8
+.debug_aranges  0x00000000      0x1d8
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x68 lcdCom.o
+                0x00000000       0x48 operations.o
  .debug_aranges
-                0x00000068       0x48 operations.o
+                0x00000048       0x68 pages.o
  .debug_aranges
-                0x000000b0       0x68 pages.o
+                0x000000b0       0x28 Proj2.o
  .debug_aranges
-                0x00000118       0x28 Proj2.o
+                0x000000d8       0xc8 models.o
  .debug_aranges
-                0x00000140       0x40 touch_screen.o
- .debug_aranges
-                0x00000180       0x38 uart.o
+                0x000001a0       0x38 uart.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x20cf
+.debug_info     0x00000000     0x2509
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x568 lcdCom.o
- .debug_info    0x00000568      0x23f operations.o
- .debug_info    0x000007a7      0xe78 pages.o
- .debug_info    0x0000161f      0x6c6 Proj2.o
- .debug_info    0x00001ce5      0x250 touch_screen.o
- .debug_info    0x00001f35      0x19a uart.o
+ .debug_info    0x00000000      0x23f operations.o
+ .debug_info    0x0000023f      0xe78 pages.o
+ .debug_info    0x000010b7      0x6c6 Proj2.o
+ .debug_info    0x0000177d      0xbf2 models.o
+ .debug_info    0x0000236f      0x19a uart.o
 
-.debug_abbrev   0x00000000      0x937
+.debug_abbrev   0x00000000      0x98c
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x11b lcdCom.o
- .debug_abbrev  0x0000011b      0x15e operations.o
- .debug_abbrev  0x00000279      0x252 pages.o
- .debug_abbrev  0x000004cb      0x24b Proj2.o
- .debug_abbrev  0x00000716      0x119 touch_screen.o
- .debug_abbrev  0x0000082f      0x108 uart.o
+ .debug_abbrev  0x00000000      0x15e operations.o
+ .debug_abbrev  0x0000015e      0x252 pages.o
+ .debug_abbrev  0x000003b0      0x24b Proj2.o
+ .debug_abbrev  0x000005fb      0x289 models.o
+ .debug_abbrev  0x00000884      0x108 uart.o
 
-.debug_line     0x00000000      0x862
+.debug_line     0x00000000      0x940
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000       0xfc lcdCom.o
- .debug_line    0x000000fc      0x1a6 operations.o
- .debug_line    0x000002a2      0x22b pages.o
- .debug_line    0x000004cd      0x195 Proj2.o
- .debug_line    0x00000662      0x115 touch_screen.o
- .debug_line    0x00000777       0xeb uart.o
+ .debug_line    0x00000000      0x1a6 operations.o
+ .debug_line    0x000001a6      0x22b pages.o
+ .debug_line    0x000003d1      0x183 Proj2.o
+ .debug_line    0x00000554      0x301 models.o
+ .debug_line    0x00000855       0xeb uart.o
 
-.debug_frame    0x00000000      0x3c8
+.debug_frame    0x00000000      0x424
  *(.debug_frame)
- .debug_frame   0x00000000       0xf0 lcdCom.o
- .debug_frame   0x000000f0       0x74 operations.o
- .debug_frame   0x00000164       0xf8 pages.o
- .debug_frame   0x0000025c       0x8c Proj2.o
- .debug_frame   0x000002e8       0x64 touch_screen.o
- .debug_frame   0x0000034c       0x7c uart.o
+ .debug_frame   0x00000000       0x74 operations.o
+ .debug_frame   0x00000074       0xf8 pages.o
+ .debug_frame   0x0000016c       0x8c Proj2.o
+ .debug_frame   0x000001f8      0x1b0 models.o
+ .debug_frame   0x000003a8       0x7c uart.o
 
-.debug_str      0x00000000      0x757
+.debug_str      0x00000000      0x87f
  *(.debug_str)
- .debug_str     0x00000000      0x370 lcdCom.o
-                                0x382 (size before relaxing)
- .debug_str     0x00000370      0x14a operations.o
+ .debug_str     0x00000000      0x24f operations.o
                                 0x283 (size before relaxing)
- .debug_str     0x000004ba      0x16d pages.o
+ .debug_str     0x0000024f      0x33c pages.o
                                 0x4f3 (size before relaxing)
- .debug_str     0x00000627       0xf1 Proj2.o
+ .debug_str     0x0000058b      0x10c Proj2.o
                                 0x629 (size before relaxing)
- .debug_str     0x00000718       0x16 touch_screen.o
-                                0x257 (size before relaxing)
- .debug_str     0x0000072e       0x29 uart.o
+ .debug_str     0x00000697      0x1bf models.o
+                                0x62b (size before relaxing)
+ .debug_str     0x00000856       0x29 uart.o
                                 0x218 (size before relaxing)
 
-.debug_loc      0x00000000     0x13de
+.debug_loc      0x00000000     0x16dc
  *(.debug_loc)
- .debug_loc     0x00000000      0x435 lcdCom.o
- .debug_loc     0x00000435       0x3d operations.o
- .debug_loc     0x00000472      0xcd2 pages.o
- .debug_loc     0x00001144      0x113 Proj2.o
- .debug_loc     0x00001257       0x76 touch_screen.o
- .debug_loc     0x000012cd      0x111 uart.o
+ .debug_loc     0x00000000       0x3d operations.o
+ .debug_loc     0x0000003d      0xcd2 pages.o
+ .debug_loc     0x00000d0f      0x113 Proj2.o
+ .debug_loc     0x00000e22      0x7a9 models.o
+ .debug_loc     0x000015cb      0x111 uart.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -750,14 +708,13 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x158
+.debug_ranges   0x00000000      0x188
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x58 lcdCom.o
- .debug_ranges  0x00000058       0x38 operations.o
- .debug_ranges  0x00000090       0x58 pages.o
- .debug_ranges  0x000000e8       0x18 Proj2.o
- .debug_ranges  0x00000100       0x30 touch_screen.o
- .debug_ranges  0x00000130       0x28 uart.o
+ .debug_ranges  0x00000000       0x38 operations.o
+ .debug_ranges  0x00000038       0x58 pages.o
+ .debug_ranges  0x00000090       0x18 Proj2.o
+ .debug_ranges  0x000000a8       0xb8 models.o
+ .debug_ranges  0x00000160       0x28 uart.o
 
 .debug_macro
  *(.debug_macro)
