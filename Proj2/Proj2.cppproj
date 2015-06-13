@@ -131,6 +131,12 @@
     <Compile Include="opertions.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="pages.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pages.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Proj2.cpp">
       <SubType>compile</SubType>
     </Compile>

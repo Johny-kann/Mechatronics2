@@ -2,7 +2,7 @@
  * Proj2.cpp
  *
  * Created: 6/9/2015 8:23:22 PM
- *  Author: User
+ *  Author: Janakiraman
  */ 
 
 # define F_CPU 16000000L
@@ -11,11 +11,12 @@
 #include <avr/interrupt.h>
 #include "uart.h"
 //#include "servo.h"
-//#include "LcdCom.h"
+#include "LcdCom.h"
 #include "touch_screen.h"
 //#include "items.h"
 #include "opertions.h"
 //#include "stepper_motor.h"
+#include "pages.h"
 
 TouchScreen touchscreen;
 //int count = 0 ;
@@ -43,21 +44,26 @@ int main(void)
 {
 	sei();
 	//count = 0;
+	LcdDisplay lcd;
+	
 	touchscreen.init();
+	lcd.init_lcd();
 	USART_Init(MYUBRR);
 	timer0_interrupt_init();
-
-	
-	
+	lcd.clearDisplay();
+	Pages page;
+	page.introPage();
 	 while (1)
 	 {
-		 _delay_ms(500);
-
-	/*	USART_Send_string(" X: ");
-		USART_Send_int(touchscreen.getPosX());
-		USART_Send_string(" Y: ");
-		USART_Send_int(touchscreen.getPosY());
-		*/
+		 _delay_ms(200);
+	/*	 if(touchscreen.getPosX()<950 && touchscreen.getPosX()>50)
+			lcd.clearDisplay();
+		 lcd.gotoXY(1,5);
+		 
+		 lcd.displayInt(touchscreen.getPosX());
+		 lcd.gotoXY(2,10);
+		 lcd.displayInt(touchscreen.getPosY());
+*/	page.chooseAction(touchscreen.getPosX(),touchscreen.getPosY());
 
 	 }
 }
@@ -84,6 +90,4 @@ static uint16_t count = 0;
 
 	}
 	count++;
-	
-	
 }

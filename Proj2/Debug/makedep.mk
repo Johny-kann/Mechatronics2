@@ -6,6 +6,8 @@ lcdCom.cpp
 
 operations.cpp
 
+pages.cpp
+
 Proj2.cpp
 
 servo.cpp

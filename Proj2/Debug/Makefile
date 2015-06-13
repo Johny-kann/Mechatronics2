@@ -39,6 +39,7 @@ SUBDIRS :=
 C_SRCS +=  \
 ../lcdCom.cpp \
 ../operations.cpp \
+../pages.cpp \
 ../Proj2.cpp \
 ../servo.cpp \
 ../stepper_motor.cpp \
@@ -55,6 +56,7 @@ ASM_SRCS +=
 OBJS +=  \
 lcdCom.o \
 operations.o \
+pages.o \
 Proj2.o \
 servo.o \
 stepper_motor.o \
@@ -64,6 +66,7 @@ uart.o
 OBJS_AS_ARGS +=  \
 lcdCom.o \
 operations.o \
+pages.o \
 Proj2.o \
 servo.o \
 stepper_motor.o \
@@ -73,6 +76,7 @@ uart.o
 C_DEPS +=  \
 lcdCom.d \
 operations.d \
+pages.d \
 Proj2.d \
 servo.d \
 stepper_motor.d \
@@ -82,6 +86,7 @@ uart.d
 C_DEPS_AS_ARGS +=  \
 lcdCom.d \
 operations.d \
+pages.d \
 Proj2.d \
 servo.d \
 stepper_motor.d \
@@ -102,6 +107,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
