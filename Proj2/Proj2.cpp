@@ -10,60 +10,65 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "uart.h"
-#include "LcdCom.h"
-#include "touch_screen.h"
+#include "servo.h"
+//#include "LcdCom.h"
+//#include "touch_screen.h"
 //#include "items.h"
-#include "opertions.h"
-#include "stepper_motor.h"
+//#include "opertions.h"
+//#include "stepper_motor.h"
 
-TouchScreen touchscreen;
+//TouchScreen touchscreen;
+
+/*void timer1_interrupt_init(unsigned int number)
+{
+	TCCR1B |= 1<<CS10 | 1<<CS11 | 1<<WGM12;
+	TIMSK1 = 1 << OCIE1A;
+	OCR1A = number;
+	
+}*/
 
 
 int main(void)
 {
-	
-//	USART_Init(MYUBRR);
-//	USART_Sendbyte(0xFE);
-//	USART_Sendbyte(0x01);
-//	LcdDisplay lcd;
-//	lcd.init_lcd();
-//	lcd.clearDisplay();
-//	int i = 1;
+	/* DDRD |= 0xFF;
+	 DDRB |= 0xFF;
 
-//	DDRC &= ~(0<<DDC1);
-	
-//	uint16_t adc_result ;
-	sei();
-	
-	StepperMotor stepMotor;
-	
-//	touchscreen.init();
-	
-//	touchScreen.init();
-//	timer1_interrupt_init(50000);
-	
-	
-//	adc_init();
-	
-	
+	  TCCR1A|=(1<<COM1A1)|(1<<COM1B1)|(1<<WGM11);        //NON Inverted PWM
+	  TCCR1B|=(1<<WGM13)|(1<<WGM12)|(1<<CS11)|(1<<CS10); //PRESCALER=64 MODE 14(FAST PWM)
+	  
+	  
+
+	  ICR1=4999;  //fPWM=50Hz (Period = 20ms Standard).
+	  */
+
+	Servo servo;
+	servo.initAttachTimer();
+	 while (1)
+	 {
+		 for(int i=0;i<=160;i+=5)
+		 {
+			servo.setDegree(i);
+			_delay_ms(50);
+		 }
 		
-    while(1)
-    {
-	//	adc_result = adc_read(1);
-//	USART_Send_string(" X: ");
-//	USART_Send_int(touchscreen.getPosX());
-//	USART_Send_string(" Y: ");
-//	USART_Send_int(touchscreen.getPosY());
-//	_delay_ms(1000);
-	stepMotor.moveForward(360,2);
-	_delay_ms(500);
-	stepMotor.moveBackward(150,3);
-		
-    }
+		for(int i=160;i>=0;i-=5)
+		{
+			servo.setDegree(i);
+			_delay_ms(50);
+		}
+		 servo.setDegree(0);
+		 _delay_ms(1000);
+		 servo.setDegree(160);
+		 _delay_ms(1000);
+	 }
 }
 
+
+/*
 ISR(TIMER1_COMPA_vect)
 {
 	touchscreen.setPosX(readX());
 	touchscreen.setPosY(readY());
 }
+
+*/

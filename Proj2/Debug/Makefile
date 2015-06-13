@@ -40,6 +40,7 @@ C_SRCS +=  \
 ../lcdCom.cpp \
 ../operations.cpp \
 ../Proj2.cpp \
+../servo.cpp \
 ../stepper_motor.cpp \
 ../touch_screen.cpp \
 ../uart.cpp
@@ -55,6 +56,7 @@ OBJS +=  \
 lcdCom.o \
 operations.o \
 Proj2.o \
+servo.o \
 stepper_motor.o \
 touch_screen.o \
 uart.o
@@ -63,6 +65,7 @@ OBJS_AS_ARGS +=  \
 lcdCom.o \
 operations.o \
 Proj2.o \
+servo.o \
 stepper_motor.o \
 touch_screen.o \
 uart.o
@@ -71,6 +74,7 @@ C_DEPS +=  \
 lcdCom.d \
 operations.d \
 Proj2.d \
+servo.d \
 stepper_motor.d \
 touch_screen.d \
 uart.d
@@ -79,6 +83,7 @@ C_DEPS_AS_ARGS +=  \
 lcdCom.d \
 operations.d \
 Proj2.d \
+servo.d \
 stepper_motor.d \
 touch_screen.d \
 uart.d
@@ -97,6 +102,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

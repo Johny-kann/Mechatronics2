@@ -8,6 +8,8 @@ operations.cpp
 
 Proj2.cpp
 
+servo.cpp
+
 stepper_motor.cpp
 
 touch_screen.cpp

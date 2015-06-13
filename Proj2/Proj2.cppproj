@@ -122,6 +122,12 @@
     <Compile Include="Proj2.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="servo.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="servo.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="stepper_motor.cpp">
       <SubType>compile</SubType>
     </Compile>
