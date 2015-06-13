@@ -56,14 +56,7 @@ int main(void)
 	 while (1)
 	 {
 		 _delay_ms(200);
-	/*	 if(touchscreen.getPosX()<950 && touchscreen.getPosX()>50)
-			lcd.clearDisplay();
-		 lcd.gotoXY(1,5);
-		 
-		 lcd.displayInt(touchscreen.getPosX());
-		 lcd.gotoXY(2,10);
-		 lcd.displayInt(touchscreen.getPosY());
-*/	page.chooseAction(touchscreen.getPosX(),touchscreen.getPosY());
+		page.chooseAction(touchscreen.getPosX(),touchscreen.getPosY());
 
 	 }
 }

@@ -104,7 +104,7 @@ void Pages::dispPage2()
 	this->pageNo = 2;
 	this->lcd.clearDisplay();
 	this->lcd.displayString("CW");
-	this->lcd.gotoXY(1,9);
+	this->lcd.gotoXY(1,7);
 	this->lcd.displayString("Home");
 	this->lcd.gotoXY(1,14);
 	this->lcd.displayString("CCW");

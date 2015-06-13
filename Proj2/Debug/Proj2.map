@@ -107,8 +107,6 @@ Discarded input sections
                 0x00000000        0x3 uart.o
  .text._Z14USART_Send_intj
                 0x00000000       0x5a uart.o
- .text._Z13USART_Receivev
-                0x00000000       0x10 uart.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
@@ -656,7 +654,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x1c0
+.debug_aranges  0x00000000      0x1b8
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x68 lcdCom.o
@@ -669,61 +667,61 @@ END GROUP
  .debug_aranges
                 0x00000140       0x40 touch_screen.o
  .debug_aranges
-                0x00000180       0x40 uart.o
+                0x00000180       0x38 uart.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x20ec
+.debug_info     0x00000000     0x20cf
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x568 lcdCom.o
  .debug_info    0x00000568      0x23f operations.o
  .debug_info    0x000007a7      0xe78 pages.o
  .debug_info    0x0000161f      0x6c6 Proj2.o
  .debug_info    0x00001ce5      0x250 touch_screen.o
- .debug_info    0x00001f35      0x1b7 uart.o
+ .debug_info    0x00001f35      0x19a uart.o
 
-.debug_abbrev   0x00000000      0x952
+.debug_abbrev   0x00000000      0x937
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x11b lcdCom.o
  .debug_abbrev  0x0000011b      0x15e operations.o
  .debug_abbrev  0x00000279      0x252 pages.o
  .debug_abbrev  0x000004cb      0x24b Proj2.o
  .debug_abbrev  0x00000716      0x119 touch_screen.o
- .debug_abbrev  0x0000082f      0x123 uart.o
+ .debug_abbrev  0x0000082f      0x108 uart.o
 
-.debug_line     0x00000000      0x87b
+.debug_line     0x00000000      0x862
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0xfc lcdCom.o
  .debug_line    0x000000fc      0x1a6 operations.o
  .debug_line    0x000002a2      0x22b pages.o
  .debug_line    0x000004cd      0x195 Proj2.o
  .debug_line    0x00000662      0x115 touch_screen.o
- .debug_line    0x00000777      0x104 uart.o
+ .debug_line    0x00000777       0xeb uart.o
 
-.debug_frame    0x00000000      0x3d8
+.debug_frame    0x00000000      0x3c8
  *(.debug_frame)
  .debug_frame   0x00000000       0xf0 lcdCom.o
  .debug_frame   0x000000f0       0x74 operations.o
  .debug_frame   0x00000164       0xf8 pages.o
  .debug_frame   0x0000025c       0x8c Proj2.o
  .debug_frame   0x000002e8       0x64 touch_screen.o
- .debug_frame   0x0000034c       0x8c uart.o
+ .debug_frame   0x0000034c       0x7c uart.o
 
-.debug_str      0x00000000      0x7b3
+.debug_str      0x00000000      0x757
  *(.debug_str)
  .debug_str     0x00000000      0x370 lcdCom.o
                                 0x382 (size before relaxing)
- .debug_str     0x00000370      0x185 operations.o
+ .debug_str     0x00000370      0x14a operations.o
                                 0x283 (size before relaxing)
- .debug_str     0x000004f5      0x16d pages.o
+ .debug_str     0x000004ba      0x16d pages.o
                                 0x4f3 (size before relaxing)
- .debug_str     0x00000662       0xf1 Proj2.o
+ .debug_str     0x00000627       0xf1 Proj2.o
                                 0x629 (size before relaxing)
- .debug_str     0x00000753       0x16 touch_screen.o
+ .debug_str     0x00000718       0x16 touch_screen.o
                                 0x257 (size before relaxing)
- .debug_str     0x00000769       0x4a uart.o
-                                0x239 (size before relaxing)
+ .debug_str     0x0000072e       0x29 uart.o
+                                0x218 (size before relaxing)
 
 .debug_loc      0x00000000     0x13de
  *(.debug_loc)
@@ -752,14 +750,14 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x160
+.debug_ranges   0x00000000      0x158
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x58 lcdCom.o
  .debug_ranges  0x00000058       0x38 operations.o
  .debug_ranges  0x00000090       0x58 pages.o
  .debug_ranges  0x000000e8       0x18 Proj2.o
  .debug_ranges  0x00000100       0x30 touch_screen.o
- .debug_ranges  0x00000130       0x30 uart.o
+ .debug_ranges  0x00000130       0x28 uart.o
 
 .debug_macro
  *(.debug_macro)
