@@ -12,7 +12,7 @@ void Servo::setDegree(uint16_t degree)
 {
 	this->degree = degree;
 	
-	OCR1A = (int)(500/160)*this->degree+150;
+	OCR1A = (int)(330*this->degree/140)+140;
 }
 
 uint16_t Servo::getDegree()
@@ -22,8 +22,8 @@ uint16_t Servo::getDegree()
 
 void Servo::stopTimer()
 {
-	TCCR1B |= (1<<CS10|1<<CS11|1<<CS12);
-	TCCR1A |= (1<<COM1A0|1<<COM1A1|1<<COM1B0|1<<COM1B1);
+	TCCR1B &= ~(1<<CS10|1<<CS11|1<<CS12);
+	TCCR1A &= ~(1<<COM1A0|1<<COM1A1|1<<COM1B0|1<<COM1B1);
 }
 
 void Servo::initAttachTimer()
@@ -34,6 +34,6 @@ void Servo::initAttachTimer()
 	
 	ICR1=4999;  //fPWM=50Hz (Period = 20ms Standard).
 	
-	setDegree(0);
+	this->setDegree(0);
 }
 
