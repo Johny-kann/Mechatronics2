@@ -13,6 +13,8 @@
 
 void timer1_interrupt_init(unsigned int number);
 
+void timer0_interrupt_init();
+
 void adc_init();
 
 uint16_t adc_read(uint8_t ch);
@@ -24,3 +26,5 @@ uint16_t readY();
 
 
 #endif /* OPERTIONS_H_ */
+
+

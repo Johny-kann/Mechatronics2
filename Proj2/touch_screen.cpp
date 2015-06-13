@@ -6,16 +6,17 @@
  */ 
 
 #include "touch_screen.h"
+#include "opertions.h"
 
-void TouchScreen::adc_init()
+/*void TouchScreen::adc_init()
 {
 	ADMUX |= (1<<REFS0);
 	ADCSRA |= (1<<ADPS0) | (1<<ADPS1) | (1<<ADPS2) | (1<<ADEN);	
-}
+}*/
 
 void TouchScreen::init()
 {
-	this->adc_init();
+	adc_init();
 }
 
 uint16_t TouchScreen::getPosX()

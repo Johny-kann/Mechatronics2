@@ -25,7 +25,7 @@ protected:
 
 private:
 	uint16_t posX,posY;
-	void adc_init();
+//	void adc_init();
 
 };
 

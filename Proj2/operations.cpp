@@ -28,6 +28,16 @@ void timer1_interrupt_init(unsigned int number)
 	
 }
 
+void timer0_interrupt_init()
+{
+	
+	TCCR0B |= 1<< CS01 | 1<<CS00;
+	//| 1<<WGM02;
+	TIMSK0 = 1 << OCIE0A;
+	//	OCR0A = number;
+	
+}
+
 //ISR(ADC_vect)
 //{
 //
