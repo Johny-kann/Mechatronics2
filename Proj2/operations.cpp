@@ -85,3 +85,13 @@ uint16_t readY()
 	
 	return adc_read(1);
 }
+
+uint16_t angleConversion(uint16_t touchPoint,uint16_t minTouch,uint16_t maxTouch,uint16_t minAngle,uint16_t maxAngle)
+{
+	touchPoint = 1024 - touchPoint;
+	if(touchPoint < minTouch)
+		touchPoint = minTouch;
+	else if(touchPoint > maxTouch)
+		touchPoint = maxTouch;
+	return (uint16_t)(((float)(touchPoint-minTouch))/(maxTouch-minTouch)*(maxAngle-minAngle)+minAngle);
+}

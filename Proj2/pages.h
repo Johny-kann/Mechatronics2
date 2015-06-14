@@ -15,6 +15,7 @@ class Pages
 private:
 	uint16_t pageNo;
 	LcdDisplay lcd;
+	Servo servo;
 	bool range(int num,int max,int min);
 
 public:	
@@ -24,9 +25,11 @@ public:
 	void dispPage1();
 	void dispPage2();
 	void dispPage3();
+	void dispPage4();
 	void page1Action(uint16_t posx,uint16_t posy);
 	void page2Action(uint16_t posx,uint16_t posy);
 	void page3Action(uint16_t posx,uint16_t posy);
+	void page4Action(uint16_t posx,uint16_t posy);
 	
 	
 };
