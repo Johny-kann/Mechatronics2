@@ -54,6 +54,10 @@ class StepperMotor
 	
 	public:
 	StepperMotor();
+	void setForward();
+	void setReverse();
+	void moveDegree(int degree,int utime);
+	void move(int steps,int utime);
 	void moveForward(int steps,int utime);
 	void moveBackward(int steps,int utime);
 

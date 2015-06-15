@@ -55,13 +55,18 @@ void Pages::page2Action(uint16_t posx,uint16_t posy)
 {
 	if(range(posx,950,800) && range(posy,950,800))
 	{
+		this->stepper.setForward();
 		dispPage3();
 		_delay_ms(500);
+		
 	}
 	else if(range(posx,280,100) && range(posy,950,800))
 	{
+		
+		this->stepper.setReverse();
 		dispPage3();
 		_delay_ms(500);
+		
 	}
 	else if(range(posx,660,400) && range(posy,790,650))
 	{
@@ -82,11 +87,15 @@ void Pages::page3Action(uint16_t posx,uint16_t posy)
 	}
 	else if(range(posx,900,130) && range(posy,790,650))
 	{
-		//	dispPage3();
+		uint16_t angle = angleConversion(posx,165,870,0,359);
+		
 		dispPage3();
+		
 		this->lcd.gotoXY(1,9);
-		this->lcd.displayInt(angleConversion(posx,165,870,0,360));
+		this->lcd.displayInt(angle);
 		_delay_ms(500);
+		this->stepper.moveDegree(angle,5000);
+		_delay_ms(1000);
 	}
 }
 
@@ -176,6 +185,6 @@ void Pages::dispPage3()
 	this->lcd.gotoXY(2,1);
 	this->lcd.displayString("0 - - -");
 	this->lcd.gotoXY(2,9);
-	this->lcd.displayString("- - -360");
+	this->lcd.displayString("- - -359");
 	
 }

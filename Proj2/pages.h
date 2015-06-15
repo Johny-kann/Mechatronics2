@@ -16,6 +16,7 @@ private:
 	uint16_t pageNo;
 	LcdDisplay lcd;
 	Servo servo;
+	StepperMotor stepper;
 	bool range(int num,int max,int min);
 
 public:	

@@ -79,7 +79,7 @@ void Servo::initAttachTimer()
 
 void StepperMotor::moveForward(int steps,int utime)
 {
-	this->forward = true;
+//	this->forward = true;
 	
 	PORTD &= ~(1<<DDD2);
 	
@@ -96,7 +96,7 @@ void StepperMotor::moveForward(int steps,int utime)
 
 void StepperMotor::moveBackward(int steps,int utime)
 {
-	this->forward = false;
+//	this->forward = false;
 	
 	PORTD |= (1<<DDD2);
 	
@@ -117,6 +117,53 @@ StepperMotor::StepperMotor()
 	this->forward = true;
 	DDRD |= (1<<DDD2 | 1<<DDD4);
 	PORTD &= ~(1<<DDD2|1<<DDD4);
+}
+
+void StepperMotor::move(int steps,int utime)
+{
+	if(this->forward)
+		moveForward(steps,utime);
+	else
+		moveBackward(steps,utime);
+}
+
+void StepperMotor::moveDegree(int degree,int utime)
+{
+	int moveDeg;
+	
+	if(this->forward)
+	{
+		moveDeg = this->degree - degree;
+		
+		if(moveDeg < 0)
+			moveDeg += 360;
+		
+	}else
+	{
+		moveDeg = degree - this->degree;
+		
+		if(moveDeg < 0)	
+			moveDeg+=360;
+	}
+	
+//	float steps = ((float)moveDeg)*200/360;
+	this->degree = degree;
+	
+	this->move((moveDeg*200)/360 , utime);
+	
+	
+	
+	
+}
+
+void StepperMotor::setForward()
+{
+	this->forward = true;	
+}
+
+void StepperMotor::setReverse()
+{
+	this->forward = false;	
 }
 
 //---------------------------LCD Screen------------------
