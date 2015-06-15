@@ -50,8 +50,10 @@ int main(void)
 	USART_Init(MYUBRR);
 	timer0_interrupt_init();
 	lcd.clearDisplay();
+	StepperMotor stepper;
 	Pages page;
 	page.introPage();
+	
 	 while (1)
 	 {
 		 _delay_ms(200);

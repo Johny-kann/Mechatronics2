@@ -47,7 +47,7 @@ class StepperMotor
 {
 
 	private:
-	uint16_t degree;
+	int degree;
 	bool forward;
 
 	protected:

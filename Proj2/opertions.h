@@ -25,6 +25,8 @@ uint16_t readY();
 
 uint16_t angleConversion(uint16_t touchPoint,uint16_t minTouch,uint16_t maxTouch,uint16_t minAngle,uint16_t maxAngle);
 
+uint16_t stepss(int angle);
+
 #endif /* OPERTIONS_H_ */
 
 

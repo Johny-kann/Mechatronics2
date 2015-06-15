@@ -95,3 +95,9 @@ uint16_t angleConversion(uint16_t touchPoint,uint16_t minTouch,uint16_t maxTouch
 		touchPoint = maxTouch;
 	return (uint16_t)(((float)(touchPoint-minTouch))/(maxTouch-minTouch)*(maxAngle-minAngle)+minAngle);
 }
+
+
+uint16_t stepss(int angle)
+{
+	return (uint16_t)((float)angle*200/360);
+}

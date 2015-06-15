@@ -90,7 +90,7 @@ void StepperMotor::moveForward(int steps,int utime)
 		_delay_us(5000);
 		PORTD &= ~(1<<DDD4);
 	}
-	this->degree+=steps;
+//	this->degree+=steps;
 	
 }
 
@@ -108,7 +108,7 @@ void StepperMotor::moveBackward(int steps,int utime)
 		PORTD &= ~(1<<DDD4);
 		//	_delay_us(utime);
 	}
-	this->degree-=steps;
+//	this->degree-=steps;
 }
 
 StepperMotor::StepperMotor()
@@ -127,32 +127,29 @@ void StepperMotor::move(int steps,int utime)
 		moveBackward(steps,utime);
 }
 
-void StepperMotor::moveDegree(int degree,int utime)
+void StepperMotor::moveDegree(int degre,int utime)
 {
 	int moveDeg;
 	
 	if(this->forward)
 	{
-		moveDeg = this->degree - degree;
+		moveDeg = this->degree - degre;
 		
 		if(moveDeg < 0)
 			moveDeg += 360;
 		
 	}else
 	{
-		moveDeg = degree - this->degree;
+		moveDeg = degre - this->degree;
 		
 		if(moveDeg < 0)	
 			moveDeg+=360;
 	}
 	
 //	float steps = ((float)moveDeg)*200/360;
-	this->degree = degree;
-	
-	this->move((moveDeg*200)/360 , utime);
-	
-	
-	
+	this->degree = degre;
+		
+	this->move(stepss(moveDeg) , utime);
 	
 }
 
