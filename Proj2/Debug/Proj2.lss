@@ -23,9 +23,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_str    000009f2  00000000  00000000  00006498  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00002780  00000000  00000000  00006e8a  2**0
+ 10 .debug_loc    00002778  00000000  00000000  00006e8a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 000001c8  00000000  00000000  0000960a  2**0
+ 11 .debug_ranges 000001c8  00000000  00000000  00009602  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1265,11 +1265,10 @@ int main(void)
      774:	e1 f7       	brne	.-8      	; 0x76e <main+0x58>
      776:	00 c0       	rjmp	.+0      	; 0x778 <main+0x62>
      778:	00 00       	nop
-	//		 lcd.clearDisplay();
-		
-		 }
-		 
-		*/ 
+	
+	 while (1)
+	 {
+		 _delay_ms(200);
 		page.chooseAction(touchscreen.getPosX(),touchscreen.getPosY());
      77a:	80 e5       	ldi	r24, 0x50	; 80
      77c:	91 e0       	ldi	r25, 0x01	; 1
@@ -1532,23 +1531,23 @@ void StepperMotor::moveForward(int steps,int utime)
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
-     8d8:	ef e1       	ldi	r30, 0x1F	; 31
-     8da:	fe e4       	ldi	r31, 0x4E	; 78
+     8d8:	ef e3       	ldi	r30, 0x3F	; 63
+     8da:	ff e1       	ldi	r31, 0x1F	; 31
      8dc:	31 97       	sbiw	r30, 0x01	; 1
      8de:	f1 f7       	brne	.-4      	; 0x8dc <_ZN12StepperMotor11moveForwardEii+0x10>
      8e0:	00 c0       	rjmp	.+0      	; 0x8e2 <_ZN12StepperMotor11moveForwardEii+0x16>
      8e2:	00 00       	nop
 	{
-		_delay_us(5000);
+		_delay_us(2000);
 		PORTD |= (1<<DDD4);
      8e4:	5c 9a       	sbi	0x0b, 4	; 11
-     8e6:	ef e1       	ldi	r30, 0x1F	; 31
-     8e8:	fe e4       	ldi	r31, 0x4E	; 78
+     8e6:	ef e3       	ldi	r30, 0x3F	; 63
+     8e8:	ff e1       	ldi	r31, 0x1F	; 31
      8ea:	31 97       	sbiw	r30, 0x01	; 1
      8ec:	f1 f7       	brne	.-4      	; 0x8ea <_ZN12StepperMotor11moveForwardEii+0x1e>
      8ee:	00 c0       	rjmp	.+0      	; 0x8f0 <_ZN12StepperMotor11moveForwardEii+0x24>
      8f0:	00 00       	nop
-		_delay_us(5000);
+		_delay_us(2000);
 		PORTD &= ~(1<<DDD4);
      8f2:	5c 98       	cbi	0x0b, 4	; 11
 {
@@ -1578,23 +1577,23 @@ void StepperMotor::moveBackward(int steps,int utime)
      904:	a4 f4       	brge	.+40     	; 0x92e <__stack+0x2f>
      906:	80 e0       	ldi	r24, 0x00	; 0
      908:	90 e0       	ldi	r25, 0x00	; 0
-     90a:	ef e1       	ldi	r30, 0x1F	; 31
-     90c:	fe e4       	ldi	r31, 0x4E	; 78
+     90a:	ef e3       	ldi	r30, 0x3F	; 63
+     90c:	ff e1       	ldi	r31, 0x1F	; 31
      90e:	31 97       	sbiw	r30, 0x01	; 1
      910:	f1 f7       	brne	.-4      	; 0x90e <__stack+0xf>
      912:	00 c0       	rjmp	.+0      	; 0x914 <__stack+0x15>
      914:	00 00       	nop
 	{
-		_delay_us(5000);
+		_delay_us(2000);
 		PORTD |= (1<<DDD4);
      916:	5c 9a       	sbi	0x0b, 4	; 11
-     918:	ef e1       	ldi	r30, 0x1F	; 31
-     91a:	fe e4       	ldi	r31, 0x4E	; 78
+     918:	ef e3       	ldi	r30, 0x3F	; 63
+     91a:	ff e1       	ldi	r31, 0x1F	; 31
      91c:	31 97       	sbiw	r30, 0x01	; 1
      91e:	f1 f7       	brne	.-4      	; 0x91c <__stack+0x1d>
      920:	00 c0       	rjmp	.+0      	; 0x922 <__stack+0x23>
      922:	00 00       	nop
-		_delay_us(5000);
+		_delay_us(2000);
 		PORTD &= ~(1<<DDD4);
      924:	5c 98       	cbi	0x0b, 4	; 11
 {

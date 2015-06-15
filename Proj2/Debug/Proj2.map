@@ -852,13 +852,13 @@ END GROUP
  .debug_str     0x000009c9       0x29 uart.o
                                 0x218 (size before relaxing)
 
-.debug_loc      0x00000000     0x2780
+.debug_loc      0x00000000     0x2778
  *(.debug_loc)
  .debug_loc     0x00000000      0x214 operations.o
  .debug_loc     0x00000214     0x19eb pages.o
  .debug_loc     0x00001bff      0x112 Proj2.o
- .debug_loc     0x00001d11      0x95e models.o
- .debug_loc     0x0000266f      0x111 uart.o
+ .debug_loc     0x00001d11      0x956 models.o
+ .debug_loc     0x00002667      0x111 uart.o
 
 .debug_macinfo
  *(.debug_macinfo)

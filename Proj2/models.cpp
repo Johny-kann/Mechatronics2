@@ -85,9 +85,9 @@ void StepperMotor::moveForward(int steps,int utime)
 	
 	for(int i=0 ; i<steps ; i++)
 	{
-		_delay_us(5000);
+		_delay_us(2000);
 		PORTD |= (1<<DDD4);
-		_delay_us(5000);
+		_delay_us(2000);
 		PORTD &= ~(1<<DDD4);
 	}
 //	this->degree+=steps;
@@ -102,9 +102,9 @@ void StepperMotor::moveBackward(int steps,int utime)
 	
 	for(int i=0 ; i<steps ; i++)
 	{
-		_delay_us(5000);
+		_delay_us(2000);
 		PORTD |= (1<<DDD4);
-		_delay_us(5000);
+		_delay_us(2000);
 		PORTD &= ~(1<<DDD4);
 		//	_delay_us(utime);
 	}

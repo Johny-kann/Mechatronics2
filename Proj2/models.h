@@ -29,7 +29,11 @@ private:
 
 };
 
-
+/*
+*
+*connect pin 9 to the signal of servo
+*
+*/
 class Servo
 {
 	private:
@@ -42,7 +46,11 @@ class Servo
 	void stopTimer();
 };
 
-
+/*
+*
+*connect direction to pin 2
+*connect step pulse to pin 4
+*/
 class StepperMotor
 {
 
